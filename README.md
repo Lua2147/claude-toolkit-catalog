@@ -6,12 +6,13 @@ Our full Claude Code configuration — skills, plugins, agents, commands, MCP se
 
 | Category | Count |
 |----------|-------|
-| Plugin Packs | 24 (200+ skills) |
-| Custom Skills | 50+ |
-| MCP Servers | 9 |
-| Custom Agents | 26 |
+| Plugin Packs | 10 (300+ skills) |
+| Custom Skills | 204 |
+| MCP Servers | 10 |
+| Custom Agents | 40+ |
 | Slash Commands | 40+ |
-| Permission Rules | 50+ |
+| CLI Tools | 5 |
+| Reference Repos | 10 |
 
 ---
 
@@ -35,24 +36,19 @@ Our full Claude Code configuration — skills, plugins, agents, commands, MCP se
 | Plugin | Provider | What It Does |
 |--------|----------|-------------|
 | **claude-mem** | thedotmack | Session memory persistence, context consolidation, semantic search across conversations |
-| **pptx** | anthropic-agent-skills | Generate & edit PowerPoint presentations |
-| **docx** | anthropic-agent-skills | Create & edit Word documents |
-| **pdf** | anthropic-agent-skills | Read, generate, and fill PDF forms |
-| **xlsx** | anthropic-agent-skills | Excel spreadsheet operations |
-| **web-artifacts-builder** | anthropic-agent-skills | Interactive web artifacts (HTML/CSS/JS) |
-| **document-skills** | anthropic-agent-skills | Unified document operations across formats |
-| **pair-programmer** | claude-code | Screen recording, audio capture, visual AI feedback |
+| **document-skills** | anthropic-agent-skills | PDF, PPTX, DOCX, XLSX, frontend design, web artifacts, MCP builder, internal comms |
+| **pair-programmer** | claude-code | Screen recording, audio capture, visual AI feedback, real-time pair programming |
 
 ### Domain Plugins
 
 | Plugin | Provider | What It Does |
 |--------|----------|-------------|
-| **superpowers** | superpowers-dev | 40+ skills: planning, brainstorming, TDD, code review, worktrees, parallel agents |
-| **financial-analysis** | financial-services-plugins | DCF, LBO, comps, 3-statement models, deck review |
-| **investment-banking** | financial-services-plugins | CIM, buyer lists, merger models, process letters, teasers, one-pagers |
-| **private-equity** | financial-services-plugins | DD checklists, IC memos, returns analysis, portfolio ops, value creation plans |
-| **apollo-pack** | claude-code-plugins-plus | B2B company intelligence, API patterns, SDK integrations |
-| **ai-skills** | ai-skills | AI/ML fundamentals, prompt engineering, model selection, integrations |
+| **superpowers** | superpowers-dev | TDD, debugging, brainstorming, code review, plan execution, git worktrees, parallel agents |
+| **financial-analysis** | financial-services-plugins | 3-statement models, DCF, LBO, comps, competitive analysis, deck QC |
+| **investment-banking** | financial-services-plugins | CIM, teasers, one-pagers, buyer lists, merger models, process letters, pitch decks |
+| **private-equity** | financial-services-plugins | DD checklists, IC memos, deal screening, portfolio ops, returns, value creation |
+| **apollo-pack** | claude-code-plugins-plus | 25+ skills for Apollo.io API, sequences, rate limits, webhooks |
+| **ai-skills** | ai-skills | Google Workspace, Imagen, Jules, deep-research, ElevenLabs, Manus, databases |
 
 ### Product Management Plugins
 
@@ -61,7 +57,7 @@ Our full Claude Code configuration — skills, plugins, agents, commands, MCP se
 | **pm-product-discovery** | pm-skills | User research, brainstorming, assumption mapping, interview scripts |
 | **pm-product-strategy** | pm-skills | Business models, PESTLE, Porter's Five Forces, lean canvas, pricing |
 | **pm-execution** | pm-skills | PRDs, sprint planning, OKRs, release notes, stakeholder maps |
-| **pm-market-research** | pm-skills | Market sizing, segments, personas, sentiment analysis, competitor analysis |
+| **pm-market-research** | pm-skills | Market sizing, segments, personas, sentiment, competitor analysis |
 | **pm-data-analytics** | pm-skills | Cohort analysis, A/B testing, SQL queries |
 | **pm-go-to-market** | pm-skills | GTM strategy, growth loops, ICPs, battlecards |
 | **pm-marketing-growth** | pm-skills | North star metrics, positioning, product naming |
@@ -75,27 +71,175 @@ Our full Claude Code configuration — skills, plugins, agents, commands, MCP se
 
 | Skill | What It Does |
 |-------|-------------|
-| **toolkit-scout** | Searches for existing tools, scripts, skills, MCP servers before you build something new. **Mandatory before any non-trivial task.** |
+| **toolkit-scout** | **Mandatory before any non-trivial task.** Scans 204 skills, 40+ agents, 10 plugin packs, 9 MCP servers, 70+ scripts, CLI tools, and reference repos. |
 | **rem-sleep** | Consolidates and defrags memory files across sessions |
 | **wrap-up** | End-of-session summary, context handoff, memory write |
 | **insights** | Analyzes correction patterns and workflow efficiency |
 | **scout** | Surfaces relevant context from claude-mem history |
 | **boris** | 43 Claude Code workflow tips (parallel work, plan mode, hooks, worktrees) |
 | **refine** | Self-scoring convergence loops — iterates until output quality plateaus |
+| **coding-agent-loops** | Persistent tmux coding sessions with Claude Code retry loops |
+| **cron-guide** | Reference for scheduling recurring tasks and heartbeats |
 
-### Business & Strategy
+### Frontend & UI (SummonAI Kit + Vendor)
+
+| Skill | Source | What It Does |
+|-------|--------|-------------|
+| **nextjs** | SummonAI Kit | Next.js App Router, SSR, routing, middleware |
+| **next-best-practices** | Vercel | Official Next.js patterns and conventions |
+| **next-cache-components** | Vercel | Caching strategies and cache-aware components |
+| **next-upgrade** | Vercel | Next.js version upgrade workflows |
+| **react** | SummonAI Kit | React components, hooks, state management |
+| **react-best-practices** | Vercel | Official React patterns and optimization |
+| **composition-patterns** | Vercel | React component composition and reuse |
+| **typescript** | SummonAI Kit | TypeScript types, generics, strict config |
+| **frontend-design** | Anthropic | Bold UI design, typography, color systems |
+| **web-design-guidelines** | Vercel | Web design standards compliance |
+| **remotion** | Remotion | Programmatic video creation with React |
+
+### Backend & API
+
+| Skill | Source | What It Does |
+|-------|--------|-------------|
+| **python** | SummonAI Kit | Python development, async, testing |
+| **fastapi** | SummonAI Kit | FastAPI routes, services, database integration |
+| **stripe-best-practices** | Stripe | Payment integration patterns |
+| **upgrade-stripe** | Stripe | Stripe SDK/API version upgrades |
+| **better-auth-*** | Better Auth | Authentication (5 skills: best-practices, create-auth, email/password, org, 2FA) |
+
+### Database
+
+| Skill | Source | What It Does |
+|-------|--------|-------------|
+| **supabase** | SummonAI Kit | Client setup, RLS, migrations, Edge Functions |
+| **supabase-postgres-best-practices** | Supabase (official) | PostgreSQL performance optimization |
+| **postgres** | Community | PostgreSQL patterns |
+
+### Browser Automation
+
+| Skill | Source | What It Does |
+|-------|--------|-------------|
+| **playwright** | SummonAI Kit | Playwright testing, selectors, CI config |
+| **stagehand** | SummonAI Kit | AI-driven browser automation |
+
+### Cloud & Infrastructure
+
+| Skill | Source | What It Does |
+|-------|--------|-------------|
+| **cloudflare-agents-sdk** | Cloudflare | Stateful AI agents with scheduling, RPC, MCP |
+| **cloudflare-building-ai-agent** | Cloudflare | AI agents with state and WebSockets |
+| **cloudflare-durable-objects** | Cloudflare | Stateful coordination with SQLite |
+| **cloudflare-web-perf** | Cloudflare | Core Web Vitals auditing |
+| **cloudflare-wrangler** | Cloudflare | Workers, KV, R2, D1, Queues deployment |
+| **terraform-*** | HashiCorp | 6 skills: code gen, modules, style, stacks, imports, Azure |
+| **composio** | Composio | Connect to 1000+ SaaS apps with managed auth |
+| **expo-*** | Expo | 9 skills: deployment, CI/CD, API routes, SwiftUI, Jetpack, Tailwind |
+
+### Financial & Data (K-Dense-AI)
+
+| Skill | What It Does |
+|-------|-------------|
+| **edgartools** | SEC EDGAR financial data and regulatory filings |
+| **alpha-vantage** | Market data and financial time series |
+| **fred-economic-data** | Federal Reserve economic indicators |
+| **usfiscaldata** | US fiscal and treasury data |
+| **denario** | Financial calculations and modeling |
+| **hedgefundmonitor** | Hedge fund tracking and analysis |
+| **timesfm-forecasting** | Time series forecasting |
+| **statistical-analysis** | Statistical modeling and hypothesis testing |
+| **exploratory-data-analysis** | EDA workflows and visualization |
+| **polars** | High-performance dataframes |
+| **dask** | Parallel computing for large datasets |
+| **market-research-reports** | Market research generation |
+
+### AI & ML
+
+| Skill | Source | What It Does |
+|-------|--------|-------------|
+| **claude-agent-sdk** | SummonAI Kit | Claude Agent SDK, multi-agent orchestration |
+| **gemini-api-dev** | Google | Gemini API development |
+| **gemini-interactions-api** | Google | Gemini interactions and conversations |
+| **gemini-live-api-dev** | Google | Gemini Live API real-time interactions |
+| **vertex-ai-api-dev** | Google | Vertex AI platform development |
+| **hf-cli** | HuggingFace | HF Hub CLI for models, datasets, repos |
+| **hugging-face-*** | HuggingFace | 11 skills: datasets, model training (TRL), evaluation, jobs, trackio, Gradio, MCP, dataset-viewer, paper-publisher, tool-builder |
+| **replicate** | Replicate | Run AI models via Replicate API |
+| **openrag** | Langflow | Single-command RAG platform (Langflow + Docling + OpenSearch) |
+| **autoresearch** | Karpathy | Autonomous experiment loop — agent iterates, evaluates, keeps improvements |
+
+### SEO & GEO — AI Search Optimization (12 skills + 5 agents)
+
+| Skill | What It Does |
+|-------|-------------|
+| **geo** | Main orchestrator — `/geo audit <url>` for full GEO + SEO audit |
+| **geo-audit** | Full audit orchestration & composite scoring (0-100) |
+| **geo-citability** | AI citation readiness scoring (optimal 134-167 word passages) |
+| **geo-crawlers** | Check robots.txt for 14+ AI crawlers |
+| **geo-llmstxt** | Analyze/generate llms.txt standard file |
+| **geo-brand-mentions** | Brand presence on AI-cited platforms (YouTube, Reddit, Wikipedia) |
+| **geo-platform-optimizer** | Platform-specific AI search optimization |
+| **geo-schema** | Structured data (JSON-LD) for AI discoverability |
+| **geo-technical** | Technical SEO foundations |
+| **geo-content** | Content quality & E-E-A-T assessment |
+| **geo-report** | Client-ready markdown GEO report |
+| **geo-report-pdf** | Professional PDF with charts and gauges |
+
+### Security (Trail of Bits — 50+ skills)
+
+| Skill | What It Does |
+|-------|-------------|
+| **tob-semgrep** | Static analysis with Semgrep |
+| **tob-semgrep-rule-creator** | Custom Semgrep rule creation |
+| **tob-codeql** | GitHub CodeQL security scanning |
+| **tob-audit-context-building** | Deep contextual security analysis |
+| **tob-audit-prep-assistant** | Security audit preparation |
+| **tob-supply-chain-risk-auditor** | Dependency and supply chain risk |
+| **tob-code-maturity-assessor** | Code quality and maturity scoring |
+| **tob-coverage-analysis** | Test coverage analysis |
+| **tob-modern-python** | Modern Python best practices |
+| **tob-property-based-testing** | Property-based test generation |
+| **tob-secure-workflow-guide** | Secure CI/CD workflows |
+| **tob-variant-analysis** | Vulnerability variant detection |
+| **tob-*** | 40+ more: fuzzing, crypto analysis, blockchain scanners, SARIF, YARA |
+
+### Content & Social
+
+| Skill | What It Does |
+|-------|-------------|
+| **typefully** | Schedule social posts (X, LinkedIn, Threads, Bluesky) |
+| **x-posting** | X/Twitter API — search, post, engage |
+| **blog-image-generator** | Gemini-powered image generation for content |
+| **instagram-slides** | Blog-to-carousel pipeline for Instagram/LinkedIn |
+| **talking-head** | AI avatar video generation (ElevenLabs + Fal) |
+| **elevenlabs-calls** | AI phone calls via ElevenLabs + Telnyx/Twilio |
+| **research** | Multi-source intelligence (Brave, Exa, X, NewsAPI, GNews, Google CSE) |
+| **sanity-best-practices** | CMS best practices, GROQ queries |
+| **content-modeling-best-practices** | Scalable content model design |
+| **seo-aeo-best-practices** | SEO and answer engine optimization |
+| **content-experimentation-best-practices** | Content A/B testing |
+
+### Operations & Monitoring
+
+| Skill | What It Does |
+|-------|-------------|
+| **site-health** | HTTP health checks for all infrastructure endpoints |
+| **daily-review** | End-of-day pipeline review, KPI snapshot, next-day planning |
+| **revenue-metrics** | Pipeline/revenue metrics from Supabase CRM |
+
+### Business & Marketing
 
 | Skill | What It Does |
 |-------|-------------|
 | **market-research** | Market sizing, PESTLE, SWOT, TAM/SAM/SOM |
 | **competitive-landscape** | Porter's Five Forces, differentiation analysis |
 | **pricing-strategy** | Pricing models, packaging, monetization |
-| **launch-strategy** | Product launch planning, GTM, feature announcements |
+| **launch-strategy** | Product launch planning, GTM |
 | **sales-automator** | Cold email generation, follow-ups, proposals |
 | **email-sequence** | Drip campaigns, lifecycle emails, automation |
 | **content-marketer** | Content creation, SEO, omnichannel distribution |
-| **brand-voice** | Brand guidelines, visual identity, tone/style guides |
+| **brand-voice** | Brand guidelines, visual identity, tone/style |
 | **seo-fundamentals** | E-E-A-T, Core Web Vitals, technical SEO |
+| **linkedin-cli** | LinkedIn automation — profiles, search, messages, connections, posts |
 
 ### Engineering & Architecture
 
@@ -104,7 +248,7 @@ Our full Claude Code configuration — skills, plugins, agents, commands, MCP se
 | **architect-review** | System architecture review, scalability, design patterns |
 | **prompt-engineering** | LLM prompt optimization, agent debugging |
 | **prd-generator** | Feature planning, product requirements documents |
-| **postmortem-writing** | Incident reviews, root cause analysis, action items |
+| **postmortem-writing** | Incident reviews, root cause analysis |
 | **escalation** | Engineering/product/leadership escalation templates |
 | **excalidraw-diagrams** | Generate `.excalidraw` diagram files |
 
@@ -112,15 +256,13 @@ Our full Claude Code configuration — skills, plugins, agents, commands, MCP se
 
 | Skill | What It Does |
 |-------|-------------|
-| **linkedin-cli** | LinkedIn automation — profiles, search, messages, connections, posts, Sales Navigator |
 | **deep-research** | Autonomous research via Google Gemini Deep Research Agent |
 | **jules** | Delegate async coding tasks to Google Jules AI agent |
-| **postgres** | PostgreSQL read-only queries, schema exploration |
-| **outline** | Outline wiki — search, read, manage, export |
 | **linear-claude-skill** | Linear issue management & team workflows |
 | **csv-data-summarizer-claude-skill** | CSV analysis, stats, visualization |
 | **qmd-sessions** | Convert Claude Code transcripts to searchable markdown |
 | **cc-nano-banana** | Image generation via Gemini |
+| **outline** | Outline wiki — search, read, manage, export |
 
 ---
 
@@ -131,7 +273,7 @@ All configured globally — available in every project, every session.
 | Server | Purpose | Key Operations |
 |--------|---------|---------------|
 | **supabase** | Database | Queries, migrations, edge functions, branch management |
-| **clickup** | Project Management | Tasks, comments, time tracking, documents, chat |
+| **clickup** | Project Management | Tasks, comments, time tracking, documents |
 | **playwright** | Browser Automation | Navigate, click, fill forms, screenshots, scrape |
 | **context7** | Library Docs | Up-to-date documentation lookup for any library |
 | **github** | Source Control | PRs, issues, commits, code search, releases |
@@ -149,29 +291,46 @@ All configured globally — available in every project, every session.
 
 | Agent | What It Does |
 |-------|-------------|
+| **backend-engineer** | Backend architecture, API design, server-side logic |
+| **frontend-engineer** | React/Next.js components, UI implementation |
+| **frontend-developer** | Frontend development specialist |
+| **fullstack-developer** | End-to-end engineering across frontend, backend, DB |
+| **performance-engineer** | Profiling, optimization, bottleneck analysis |
+| **designer** | UI/UX decisions, component layout, accessibility |
+| **security-engineer** | Security audits, vulnerability assessment, auth patterns |
+| **refactor-agent** | Code restructuring, pattern extraction, tech debt |
+| **test-engineer** | Test suite management, coverage analysis, QA |
 | **code-reviewer** | Security-focused code review with performance analysis |
 | **code-simplifier** | Simplification-first refactoring — reduce complexity |
-| **frontend-developer** | React/TypeScript/Tailwind specialist |
-| **fullstack-developer** | End-to-end engineering across frontend, backend, DB |
-| **test-engineer** | Test suite management, coverage analysis, QA |
 | **staff-reviewer** | Senior engineer perspective on code quality |
 | **debugger** | General error/exception debugging |
 | **error-detective** | Error analysis, log parsing, root cause diagnosis |
 | **prompt-engineer** | Prompt optimization and debugging |
 | **database-architect** | Schema design, query optimization, data modeling |
+| **data-engineer** | Data pipelines, ETL, data infrastructure |
+| **devops-engineer** | Infrastructure, CI/CD, deployment |
+| **documentation-writer** | Technical documentation |
 
 ### Domain Agents
 
 | Agent | What It Does |
 |-------|-------------|
-| **compliance-checker** | OpSec compliance validation for our brand/legal requirements |
+| **compliance-checker** | OpSec compliance validation for brand/legal requirements |
 | **deal-reviewer** | Lower-middle-market M&A deal analysis |
 | **email-verify-debugger** | KadenVerify email verification system debugging |
 | **deploy-validator** | Deployment validation and infrastructure checks |
 
-### GSD (Get Shit Done) Agents
+### GEO-SEO Agents (5)
 
-A meta-workflow system with 12 specialized agents for structured project execution:
+| Agent | What It Does |
+|-------|-------------|
+| **geo-ai-visibility** | Citability, crawlers, llms.txt, brand mentions |
+| **geo-platform-analysis** | Platform-specific optimization |
+| **geo-technical** | Technical SEO analysis |
+| **geo-content** | Content & E-E-A-T analysis |
+| **geo-schema** | Schema markup analysis |
+
+### GSD (Get Shit Done) Agents (12)
 
 | Agent | Role |
 |-------|------|
@@ -205,6 +364,10 @@ A meta-workflow system with 12 specialized agents for structured project executi
 | `/techdebt` | Identify technical debt in recent changes |
 | `/worktree` | Create & manage git worktrees for parallel work |
 | `/start` | Session initialization workflow |
+| `/simplify` | Parallel agents for code quality, reuse, efficiency review |
+| `/loop` | Schedule recurring tasks on interval |
+| `/wrap-up` | End-of-session summary, commit session work, context handoff |
+| `/rem-sleep` | Consolidate and defrag memory files |
 
 ### GSD Commands (30+)
 
@@ -230,6 +393,7 @@ Project lifecycle management:
 /gsd:resume-work       — Resume paused project
 /gsd:complete-milestone — Mark milestone done
 /gsd:cleanup           — Clean up resources
+/gsd:quick             — Fast task execution
 /gsd:settings          — Configure GSD preferences
 /gsd:help              — Full command reference
 ```
@@ -266,6 +430,23 @@ Project lifecycle management:
 2. All changes trace to request?
 3. Did you check `/toolkit-scout`?
 4. Have you written learnings to memory?
+
+---
+
+## Reference Resources (`apps/_resources/`)
+
+| Resource | Best For |
+|----------|---------|
+| **awesome-llm-apps** | Agent patterns, RAG, browser automation |
+| **system-design** | Sharding, rate limiting, message brokers |
+| **design-patterns-typescript** | Strategy, Command, Observer patterns |
+| **awesome-devops** | IaC, monitoring, CI/CD tools |
+| **papers-we-love** | Distributed systems theory |
+| **claude-skills** | 169 ready-made skills (9 categories) |
+| **skill-builder** | Creating well-structured skills |
+| **noeai-free-claude-code** | Skill examples, agent workflow patterns |
+| **paperclip** | AI agent orchestration architecture |
+| **anthropic-courses** | Prompt engineering, tool use, API fundamentals |
 
 ---
 
@@ -313,7 +494,8 @@ Add to `~/.claude.json` under `mcpServers`:
   "context7": { "command": "npx", "args": ["@anthropic-ai/mcp-context7"] },
   "google-sheets": { "command": "npx", "args": ["@anthropic-ai/mcp-google-sheets"] },
   "n8n": { "command": "npx", "args": ["@anthropic-ai/mcp-n8n"] },
-  "clickup": { "command": "npx", "args": ["@anthropic-ai/mcp-clickup"] }
+  "clickup": { "command": "npx", "args": ["@anthropic-ai/mcp-clickup"] },
+  "heyreach": { "command": "npx", "args": ["@anthropic-ai/mcp-heyreach"] }
 }
 ```
 
@@ -352,15 +534,21 @@ Add to `~/.claude/settings.json`:
 ├── settings.json        ← Permissions, hooks, plugins
 ├── CLAUDE.md            ← Global instructions (loaded every session)
 ├── RTK.md               ← RTK usage guide (loaded every session)
-├── skills/              ← 50+ custom skills
-│   ├── toolkit-scout/
-│   ├── rem-sleep/
-│   ├── brand-voice/
-│   └── ...
-├── agents/              ← 26 custom agents
+├── skills/              ← 204 custom skills
+│   ├── toolkit-scout/   ← Mandatory pre-task scanner
+│   ├── geo/             ← GEO-SEO audit orchestrator
+│   ├── geo-*/           ← 11 GEO sub-skills
+│   ├── openrag/         ← RAG platform skill
+│   ├── autoresearch/    ← Karpathy's experiment loop
+│   ├── site-health/     ← Infrastructure monitoring
+│   ├── revenue-metrics/ ← CRM pipeline analytics
+│   ├── research/        ← Multi-source intelligence
+│   └── ...              ← 190+ more skills
+├── agents/              ← 40+ custom agents
 │   ├── code-reviewer.md
 │   ├── deal-reviewer.md
-│   ├── gsd-planner.md
+│   ├── geo-*.md         ← 5 GEO subagents
+│   ├── gsd-*.md         ← 12 GSD pipeline agents
 │   └── ...
 ├── commands/            ← 40+ slash commands
 │   ├── commit-push.md
@@ -387,4 +575,4 @@ Add to `~/.claude/settings.json`:
 
 ---
 
-*Last updated: 2026-03-09*
+*Last updated: 2026-03-12*
