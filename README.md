@@ -12,7 +12,7 @@ Full Claude Code toolkit — skills, agents, commands, GSD pipeline system, and 
 | GSD Pipeline System | 96 files | `gsd/` |
 | Plugin Packs | 10 (300+ skills) | Install separately |
 | MCP Servers | 10 | Configure in `~/.claude.json` |
-| CLI Tools | 5 | Install separately |
+| CLI Tools | 6 | Install separately |
 
 ## Installation
 
@@ -431,6 +431,7 @@ Project lifecycle management:
 | Tool | Version | What It Does |
 |------|---------|-------------|
 | **RTK** (Rust Token Killer) | v0.27.2 | Compresses Bash output via PreToolUse hook — saves 60-90% tokens per session |
+| **Playwright** | v1.58.2 | Browser automation CLI — codegen, screenshots, test recording, PDF generation |
 | **QMD** | — | Indexes Claude Code session transcripts for semantic search |
 | **GWS CLI** | v0.8.0 | Google Workspace operations from the command line |
 | **GSD** | — | 30+ meta-prompting commands for structured project execution |
