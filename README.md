@@ -1,18 +1,43 @@
 # Claude Code Toolkit Catalog
 
-Our full Claude Code configuration — skills, plugins, agents, commands, MCP servers, and automation hooks. Everything listed here is available in every session.
+Full Claude Code toolkit — skills, agents, commands, GSD pipeline system, and configuration. Clone and install to get everything working in minutes.
 
 ## Quick Stats
 
-| Category | Count |
-|----------|-------|
-| Plugin Packs | 10 (300+ skills) |
-| Custom Skills | 204 |
-| MCP Servers | 10 |
-| Custom Agents | 40+ |
-| Slash Commands | 40+ |
-| CLI Tools | 5 |
-| Reference Repos | 10 |
+| Category | Count | Location |
+|----------|-------|----------|
+| Custom Skills | 212 | `skills/` |
+| Custom Agents | 40 | `agents/` |
+| Slash Commands | 43 | `commands/` |
+| GSD Pipeline System | 96 files | `gsd/` |
+| Plugin Packs | 10 (300+ skills) | Install separately |
+| MCP Servers | 10 | Configure in `~/.claude.json` |
+| CLI Tools | 5 | Install separately |
+
+## Installation
+
+```bash
+git clone https://github.com/Lua2147/claude-toolkit-catalog.git
+cd claude-toolkit-catalog
+./install.sh
+```
+
+Or install manually:
+
+```bash
+# Skills
+cp -R skills/* ~/.claude/skills/
+
+# Agents
+cp agents/*.md ~/.claude/agents/
+
+# Commands
+cp commands/*.md ~/.claude/commands/
+cp -R commands/gsd ~/.claude/commands/gsd
+
+# GSD Pipeline System
+cp -R gsd ~/.claude/get-shit-done
+```
 
 ---
 
@@ -71,7 +96,7 @@ Our full Claude Code configuration — skills, plugins, agents, commands, MCP se
 
 | Skill | What It Does |
 |-------|-------------|
-| **toolkit-scout** | **Mandatory before any non-trivial task.** Scans 204 skills, 40+ agents, 10 plugin packs, 9 MCP servers, 70+ scripts, CLI tools, and reference repos. |
+| **toolkit-scout** | **Mandatory before any non-trivial task.** Scans 212 skills, 40 agents, 10 plugin packs, 10 MCP servers, 70+ scripts, CLI tools, and reference repos. |
 | **rem-sleep** | Consolidates and defrags memory files across sessions |
 | **wrap-up** | End-of-session summary, context handoff, memory write |
 | **insights** | Analyzes correction patterns and workflow efficiency |
@@ -166,6 +191,7 @@ Our full Claude Code configuration — skills, plugins, agents, commands, MCP se
 | **replicate** | Replicate | Run AI models via Replicate API |
 | **openrag** | Langflow | Single-command RAG platform (Langflow + Docling + OpenSearch) |
 | **autoresearch** | Karpathy | Autonomous experiment loop — agent iterates, evaluates, keeps improvements |
+| **mwp** | MWP Paper | Model Workspace Protocol — framework-free AI agent orchestration via filesystem + markdown I/O contracts |
 
 ### SEO & GEO — AI Search Optimization (12 skills + 5 agents)
 
@@ -499,12 +525,18 @@ Add to `~/.claude.json` under `mcpServers`:
 }
 ```
 
-### 4. Copy Skills, Agents, and Commands
+### 4. Install Skills, Agents, Commands, and GSD
 
 ```bash
-# Skills go in ~/.claude/skills/
-# Agents go in ~/.claude/agents/
-# Commands go in ~/.claude/commands/
+# From the cloned repo:
+./install.sh
+
+# Or manually:
+cp -R skills/* ~/.claude/skills/
+cp agents/*.md ~/.claude/agents/
+cp commands/*.md ~/.claude/commands/
+cp -R commands/gsd ~/.claude/commands/gsd
+cp -R gsd ~/.claude/get-shit-done
 ```
 
 ### 5. Configure Hooks
@@ -529,38 +561,54 @@ Add to `~/.claude/settings.json`:
 
 ## Architecture
 
+### Repo Structure (what you're installing)
+
 ```
-~/.claude/
-├── settings.json        ← Permissions, hooks, plugins
-├── CLAUDE.md            ← Global instructions (loaded every session)
-├── RTK.md               ← RTK usage guide (loaded every session)
-├── skills/              ← 204 custom skills
+claude-toolkit-catalog/
+├── skills/              ← 212 custom skills (each with SKILL.md + optional scripts)
 │   ├── toolkit-scout/   ← Mandatory pre-task scanner
 │   ├── geo/             ← GEO-SEO audit orchestrator
 │   ├── geo-*/           ← 11 GEO sub-skills
 │   ├── openrag/         ← RAG platform skill
 │   ├── autoresearch/    ← Karpathy's experiment loop
-│   ├── site-health/     ← Infrastructure monitoring
-│   ├── revenue-metrics/ ← CRM pipeline analytics
-│   ├── research/        ← Multi-source intelligence
-│   └── ...              ← 190+ more skills
-├── agents/              ← 40+ custom agents
+│   ├── mwp/             ← Model Workspace Protocol methodology
+│   ├── tob-*/           ← 50+ Trail of Bits security skills
+│   └── ...              ← 140+ more skills
+├── agents/              ← 40 custom agents
 │   ├── code-reviewer.md
 │   ├── deal-reviewer.md
 │   ├── geo-*.md         ← 5 GEO subagents
 │   ├── gsd-*.md         ← 12 GSD pipeline agents
 │   └── ...
-├── commands/            ← 40+ slash commands
+├── commands/            ← 43 slash commands
 │   ├── commit-push.md
 │   ├── grill.md
-│   ├── gsd/
+│   ├── gsd/             ← 34 GSD commands
 │   │   ├── new-project.md
 │   │   ├── execute-phase.md
 │   │   └── ...
 │   └── ...
+├── gsd/                 ← GSD pipeline system (96 files)
+│   ├── bin/             ← CLI tools (gsd-tools.cjs + lib/)
+│   ├── workflows/       ← Orchestration workflows
+│   ├── templates/       ← Plan, summary, context templates
+│   └── references/      ← Checkpoints, TDD, git patterns
+├── install.sh           ← One-command installer
+└── README.md
+```
+
+### Where it installs
+
+```
+~/.claude/
+├── settings.json        ← Permissions, hooks, plugins
+├── CLAUDE.md            ← Global instructions (loaded every session)
+├── skills/              ← ← skills/ copied here
+├── agents/              ← ← agents/ copied here
+├── commands/            ← ← commands/ copied here
+├── get-shit-done/       ← ← gsd/ copied here
 └── projects/
     └── */memory/        ← Per-project persistent memory
-        └── MEMORY.md
 
 ~/.claude.json           ← MCP server configurations
 ```
