@@ -6,9 +6,12 @@ Full Claude Code toolkit — skills, agents, commands, GSD pipeline system, and 
 
 | Category | Count | Location |
 |----------|-------|----------|
-| Custom Skills | 212 | `skills/` |
-| Custom Agents | 40 | `agents/` |
-| Slash Commands | 43 | `commands/` |
+| Custom Skills | 246 | `skills/` |
+| Custom Agents | 168 | `agents/` |
+| Slash Commands | 83 | `commands/` |
+| Rules | 15 | `rules/` |
+| Contexts | 5 | `contexts/` |
+| CLAUDE.md Templates | 7 | `templates/claude-md/` |
 | GSD Pipeline System | 96 files | `gsd/` |
 | Plugin Packs | 10 (300+ skills) | Install separately |
 | MCP Servers | 10 | Configure in `~/.claude.json` |
@@ -31,9 +34,14 @@ cp -R skills/* ~/.claude/skills/
 # Agents
 cp agents/*.md ~/.claude/agents/
 
-# Commands
+# Commands (includes subdirectories)
 cp commands/*.md ~/.claude/commands/
-cp -R commands/gsd ~/.claude/commands/gsd
+for dir in commands/*/; do cp -R "$dir" ~/.claude/commands/; done
+
+# Rules, Contexts, Templates
+cp -R rules ~/.claude/rules
+cp -R contexts ~/.claude/contexts
+mkdir -p ~/.claude/templates && cp -R templates/claude-md ~/.claude/templates/
 
 # GSD Pipeline System
 cp -R gsd ~/.claude/get-shit-done

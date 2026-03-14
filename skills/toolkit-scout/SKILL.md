@@ -1,13 +1,13 @@
 ---
 name: toolkit-scout
-description: MANDATORY before any non-trivial task, plan mode entry, or building anything new. Scans all available resources — 205+ skills, 35 agents, 10 plugin packs, 9 MCP servers, 70+ scripts, CLI tools, API keys, and reference repos. Fires automatically; no user prompt needed.
+description: MANDATORY before any non-trivial task, plan mode entry, or building anything new. Scans all available resources — 246 skills, 168 agents, 83 commands, 15 rules, 10 plugin packs, 9 MCP servers, 70+ scripts, CLI tools, API keys, and reference repos. Fires automatically; no user prompt needed.
 ---
 
 # Toolkit Scout
 
 ## Overview
 
-Before building or planning ANYTHING, scan this inventory. The system has 205+ custom skills, 35 agents, 10 plugin packs, 9 MCP servers, 70+ scripts, 4 CLI tools, and 12 reference repos. Most tasks can be partially or fully solved with what already exists.
+Before building or planning ANYTHING, scan this inventory. The system has 246 custom skills, 168 agents, 83 commands, 15 rules, 5 contexts, 7 CLAUDE.md templates, 10 plugin packs, 9 MCP servers, 70+ scripts, 6 CLI tools, and 12 reference repos. Most tasks can be partially or fully solved with what already exists.
 
 ## When to Use
 
@@ -39,6 +39,19 @@ Scan all sections. Present only what's relevant to the current task.
 | `/loop` | Schedule recurring tasks on interval |
 | `/wrap-up` | End-of-session summary, commit session work, context handoff |
 | `/rem-sleep` | Consolidate and defrag memory files |
+
+#### Domain Commands (awesome-claude-code-toolkit)
+
+| Category | Commands |
+|---|---|
+| `architecture/` | `/architecture:adr`, `/architecture:design-review`, `/architecture:diagram`, `/architecture:migrate`, `/architecture:plan`, `/architecture:refactor` |
+| `devops/` | `/devops:ci-pipeline`, `/devops:deploy`, `/devops:dockerfile`, `/devops:k8s-manifest`, `/devops:monitor` |
+| `documentation/` | `/documentation:api-docs`, `/documentation:doc-gen`, `/documentation:memory-bank`, `/documentation:onboard`, `/documentation:update-codemap` |
+| `git/` | `/git:changelog`, `/git:commit`, `/git:fix-issue`, `/git:pr-create`, `/git:pr-review`, `/git:release`, `/git:worktree` |
+| `refactoring/` | `/refactoring:cleanup`, `/refactoring:dead-code`, `/refactoring:extract`, `/refactoring:rename`, `/refactoring:simplify` |
+| `security/` | `/security:audit`, `/security:csp`, `/security:dependency-audit`, `/security:hardening`, `/security:secrets-scan` |
+| `testing/` | `/testing:e2e`, `/testing:integration-test`, `/testing:snapshot-test`, `/testing:tdd`, `/testing:test-coverage`, `/testing:test-fix` |
+| `workflow/` | `/workflow:checkpoint`, `/workflow:orchestrate`, `/workflow:wrap-up` |
 
 #### GSD Commands (`~/.claude/commands/gsd/`)
 
@@ -81,10 +94,31 @@ Scan all sections. Present only what's relevant to the current task.
 | `deploy-validator` | Post-deployment health checks |
 | `email-verify-debugger` | KadenVerify issues |
 
+#### Language Specialists (awesome-claude-code-toolkit — 25 agents)
+`assembly-expert`, `c-expert`, `cpp-expert`, `csharp-expert`, `dart-expert`, `elixir-expert`, `go-expert`, `haskell-expert`, `java-expert`, `julia-expert`, `kotlin-expert`, `lua-expert`, `nim-expert`, `objective-c-expert`, `perl-expert`, `php-expert`, `python-expert`, `r-expert`, `ruby-expert`, `rust-expert`, `scala-expert`, `swift-expert`, `typescript-expert`, `zig-expert`, `clojure-expert`
+
+#### Infrastructure (awesome-claude-code-toolkit — 12 agents)
+`ansible-engineer`, `aws-architect`, `azure-architect`, `cloud-migration`, `docker-specialist`, `gcp-architect`, `kubernetes-engineer`, `linux-admin`, `network-engineer`, `terraform-engineer`, `ci-cd-specialist`, `site-reliability`
+
+#### AI/ML (awesome-claude-code-toolkit — 8 agents)
+`ai-ethics-advisor`, `computer-vision`, `data-scientist`, `ml-engineer`, `ml-ops`, `nlp-specialist`, `recommendation-systems`, `reinforcement-learning`
+
+#### Business/Product (awesome-claude-code-toolkit — 9 agents)
+`business-analyst`, `product-manager`, `scrum-master`, `technical-writer`, `ux-designer`, `ux-researcher`, `content-strategist`, `accessibility-specialist`, `localization-expert`
+
+#### Research (awesome-claude-code-toolkit — 10 agents)
+`academic-researcher`, `code-archaeologist`, `competitive-analyst`, `compliance-analyst`, `incident-responder`, `patent-analyst`, `regulatory-analyst`, `threat-modeler`, `security-researcher`, `vulnerability-analyst`
+
+#### Specialized (awesome-claude-code-toolkit — 14+ agents)
+`api-designer`, `blockchain-developer`, `compiler-engineer`, `embedded-systems`, `game-developer`, `graphics-programmer`, `iot-architect`, `low-level-optimizer`, `mobile-developer`, `real-time-systems`, `systems-programmer`, `ui-animator`, `webgl-specialist`, `hardware-interface`
+
+#### Orchestration (awesome-claude-code-toolkit — 6 agents)
+`meta-orchestrator`, `parallel-executor`, `pipeline-architect`, `quality-gate`, `resource-optimizer`, `task-decomposer`
+
 #### GSD Pipeline (13 agents)
 `gsd-planner`, `gsd-executor`, `gsd-verifier`, `gsd-debugger`, `gsd-phase-researcher`, `gsd-project-researcher`, `gsd-research-synthesizer`, `gsd-roadmapper`, `gsd-codebase-mapper`, `gsd-plan-checker`, `gsd-integration-checker`, `gsd-nyquist-auditor`
 
-### 3. Custom Skills by Domain (`~/.claude/skills/` — 179 skills)
+### 3. Custom Skills by Domain (`~/.claude/skills/` — 246 skills)
 
 #### Frontend & UI
 | Skill | Source | What it does |
@@ -172,6 +206,45 @@ Scan all sections. Present only what's relevant to the current task.
 | `openrag` | Langflow | Single-command RAG platform (Langflow + Docling + OpenSearch) |
 | `autoresearch` | Karpathy | Autonomous experiment loop — agent iterates, evaluates, keeps improvements |
 | `mwp` | MWP Paper | Model Workspace Protocol — framework-free AI agent orchestration via filesystem + markdown I/O contracts |
+
+#### Engineering Patterns (awesome-claude-code-toolkit — 34 skills)
+| Skill | What it does |
+|---|---|
+| `accessibility-wcag` | WCAG compliance and accessibility |
+| `api-design-patterns` | API architecture and design patterns |
+| `authentication-patterns` | Auth implementation patterns |
+| `aws-cloud-patterns` | AWS architecture and services |
+| `ci-cd-pipelines` | CI/CD pipeline design |
+| `continuous-learning` | Progressive learning patterns |
+| `data-engineering` | Data pipeline design |
+| `database-optimization` | Query and schema optimization |
+| `design-system` | Component library architecture |
+| `devops-automation` | Infrastructure automation |
+| `django-patterns` | Django best practices |
+| `docker-best-practices` | Container optimization |
+| `frontend-excellence` | Advanced frontend patterns |
+| `git-advanced` | Advanced git workflows |
+| `golang-idioms` | Go language patterns |
+| `graphql-design` | GraphQL schema and resolvers |
+| `kubernetes-operations` | K8s operations and debugging |
+| `llm-integration` | LLM API integration patterns |
+| `mcp-development` | MCP server development |
+| `microservices-design` | Microservices architecture |
+| `mobile-development` | Mobile app patterns |
+| `monitoring-observability` | Observability stack design |
+| `nextjs-mastery` | Advanced Next.js patterns |
+| `performance-optimization` | Performance tuning |
+| `postgres-optimization` | PostgreSQL tuning |
+| `python-best-practices` | Python idioms and patterns |
+| `react-patterns` | Advanced React patterns |
+| `redis-patterns` | Redis data structure patterns |
+| `rust-systems` | Rust systems programming |
+| `security-hardening` | Application security hardening |
+| `springboot-patterns` | Spring Boot best practices |
+| `tdd-mastery` | Test-driven development |
+| `testing-strategies` | Test strategy design |
+| `typescript-advanced` | Advanced TypeScript |
+| `websocket-realtime` | WebSocket and real-time patterns |
 
 #### Security (Trail of Bits — 50+ skills)
 | Skill | What it does |
@@ -275,6 +348,7 @@ Scan all sections. Present only what's relevant to the current task.
 | Tool | What it does |
 |---|---|
 | `rtk` | Token compression proxy — 60-90% savings (auto via hook) |
+| `playwright` | Browser automation CLI — codegen, screenshots, test recording, PDF generation |
 | `linkedin` | LinkedIn automation — profiles, search, messages, connections, Sales Navigator |
 | `gws` | Google Workspace CLI — Drive, Gmail, Calendar, Sheets, Docs |
 | `qmd` | Session transcript indexing + semantic search |
