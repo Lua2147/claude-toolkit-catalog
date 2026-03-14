@@ -8,7 +8,8 @@ Full Claude Code toolkit — skills, agents, commands, GSD pipeline system, and 
 |----------|-------|----------|
 | Custom Skills | 246 | `skills/` |
 | Custom Agents | 168 | `agents/` |
-| Slash Commands | 83 | `commands/` |
+| Slash Commands | 303 | `commands/` |
+| Plugins (as commands) | 120 | `commands/` + `plugins/` |
 | Rules | 15 | `rules/` |
 | Contexts | 5 | `contexts/` |
 | CLAUDE.md Templates | 7 | `templates/claude-md/` |
