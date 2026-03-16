@@ -1,13 +1,13 @@
 ---
 name: toolkit-scout
-description: MANDATORY before any non-trivial task, plan mode entry, or building anything new. Scans all available resources — 246 skills, 168 agents, 83 commands, 15 rules, 10 plugin packs, 9 MCP servers, 70+ scripts, CLI tools, API keys, and reference repos. Fires automatically; no user prompt needed.
+description: MANDATORY before any non-trivial task, plan mode entry, or building anything new. Scans all available resources — 252 skills, 168 agents, 303 commands, 15 rules, 10 plugin packs, 9 MCP servers, 70+ scripts, CLI tools, API keys, and reference repos. Fires automatically; no user prompt needed.
 ---
 
 # Toolkit Scout
 
 ## Overview
 
-Before building or planning ANYTHING, scan this inventory. The system has 246 custom skills, 168 agents, 83 commands, 15 rules, 5 contexts, 7 CLAUDE.md templates, 10 plugin packs, 9 MCP servers, 70+ scripts, 6 CLI tools, and 12 reference repos. Most tasks can be partially or fully solved with what already exists.
+Before building or planning ANYTHING, scan this inventory. The system has 252 custom skills, 168 agents, 303 commands, 15 rules, 5 contexts, 7 CLAUDE.md templates, 10 plugin packs, 9 MCP servers, 70+ scripts, 6 CLI tools, and 12 reference repos. Most tasks can be partially or fully solved with what already exists.
 
 ## When to Use
 
@@ -56,6 +56,26 @@ Scan all sections. Present only what's relevant to the current task.
 #### GSD Commands (`~/.claude/commands/gsd/`)
 
 30+ commands for structured project execution. Key ones: `/gsd:new-project`, `/gsd:plan-phase`, `/gsd:execute-phase`, `/gsd:progress`, `/gsd:debug`, `/gsd:quick`, `/gsd:resume-work`, `/gsd:map-codebase`. Run `/gsd:help` for full list.
+
+#### Plugin Commands (awesome-claude-code-toolkit — 122 dirs, ~220 commands)
+
+| Category | Plugins |
+|---|---|
+| **Frontend/UI** | `ui-designer`, `frontend-developer`, `responsive-designer`, `css-cleaner`, `color-contrast`, `accessibility-checker`, `screen-reader-tester`, `a11y-audit`, `visual-regression`, `bundle-analyzer` |
+| **Backend/API** | `backend-architect`, `api-architect`, `api-tester`, `api-benchmarker`, `api-reference`, `openapi-expert`, `schema-designer`, `query-optimizer`, `database-optimizer`, `migrate-tool`, `migration-generator` |
+| **Testing** | `test-writer`, `unit-test-generator`, `test-data-generator`, `test-results-analyzer`, `e2e-runner`, `mutation-tester`, `contract-tester`, `load-tester` |
+| **DevOps/Infra** | `deploy-pilot`, `docker-helper`, `k8s-helper`, `helm-charts`, `terraform-helper`, `aws-helper`, `azure-helper`, `gcp-helper`, `ci-debugger`, `monitoring-setup`, `infrastructure-maintainer` |
+| **Code Quality** | `code-guardian`, `code-review-assistant`, `code-explainer`, `code-architect`, `codebase-documenter`, `complexity-reducer`, `dead-code-finder`, `import-organizer`, `double-check`, `refactor-engine` |
+| **Git/PR/Release** | `smart-commit`, `commit-commands`, `changelog-writer`, `changelog-gen`, `pr-reviewer`, `fix-pr`, `fix-github-issue`, `release-manager`, `update-branch`, `git-flow`, `create-worktrees` |
+| **Documentation** | `doc-forge`, `readme-generator`, `adr-writer`, `onboarding-guide` |
+| **Project Mgmt** | `plan`, `sprint-prioritizer`, `explore`, `discuss`, `linear-helper`, `github-issue-manager` |
+| **AI/ML** | `ai-prompt-lab`, `rag-builder`, `embedding-manager`, `model-evaluator`, `prompt-optimizer`, `model-context-protocol`, `ultrathink`, `vision-specialist` |
+| **Performance** | `optimize`, `perf-profiler`, `performance-monitor`, `memory-profiler`, `lighthouse-runner` |
+| **Security** | `security-guidance`, `compliance-checker`, `data-privacy`, `license-checker` |
+| **Mobile** | `flutter-mobile`, `react-native-dev`, `ios-developer`, `android-developer`, `desktop-app` |
+| **Specialized** | `seed-generator`, `regex-builder`, `cron-scheduler`, `env-manager`, `env-sync`, `n8n-workflow`, `debug-session`, `bug-detective`, `dependency-manager`, `monorepo-manager`, `type-migrator`, `context7-docs`, `feature-dev`, `product-shipper`, `web-dev`, `content-creator`, `technical-sales`, `slack-notifier`, `analytics-reporter`, `experiment-tracker`, `finance-tracker`, `workflow-optimizer`, `tool-evaluator`, `python-expert`, `rapid-prototyper` |
+
+Each plugin has 1-3 slash commands (e.g., `/ui-designer:implement-design`, `/docker-helper:build-image`, `/docker-helper:optimize-dockerfile`).
 
 ### 2. Custom Agents (`~/.claude/agents/`)
 
@@ -118,7 +138,7 @@ Scan all sections. Present only what's relevant to the current task.
 #### GSD Pipeline (13 agents)
 `gsd-planner`, `gsd-executor`, `gsd-verifier`, `gsd-debugger`, `gsd-phase-researcher`, `gsd-project-researcher`, `gsd-research-synthesizer`, `gsd-roadmapper`, `gsd-codebase-mapper`, `gsd-plan-checker`, `gsd-integration-checker`, `gsd-nyquist-auditor`
 
-### 3. Custom Skills by Domain (`~/.claude/skills/` — 246 skills)
+### 3. Custom Skills by Domain (`~/.claude/skills/` — 242 skills)
 
 #### Frontend & UI
 | Skill | Source | What it does |
@@ -309,6 +329,20 @@ Scan all sections. Present only what's relevant to the current task.
 | `geo-content` | Content quality & E-E-A-T assessment |
 | `geo-report` | Client-ready markdown GEO report |
 | `geo-report-pdf` | Professional PDF with charts and gauges |
+
+#### Claude Certified Architect Exam Prep (10 skills covering all 5 domains)
+| Skill | Domain | Covers |
+|---|---|---|
+| `agentic-orchestration-patterns` | D1 (27%) | Fork sessions, escalation protocols, state persistence, hook lifecycle |
+| `tool-design-patterns` | D2 (18%) | Tool descriptions, error responses, tool_choice modes, built-in tools |
+| `claude-code-ci` | D3 (20%) | CI/CD integration, non-interactive mode, PR automation |
+| `claude-code-config-advanced` | D3 (20%) | Glob rules, plan mode decisions, iterative refinement |
+| `structured-extraction` | D4 (20%) | Few-shot extraction, validation-retry loops |
+| `message-batches-api` | D4 (20%) | Batch processing 10K+ items at 50% cost |
+| `ensemble-review` | D4 (20%) | Multi-instance review, majority vote aggregation |
+| `confidence-calibration` | D4/D5 | Confidence scoring, routing, calibration anchors |
+| `context-reliability` | D5 (15%) | Summarization traps, lost-in-middle, persistent facts |
+| `information-provenance` | D5 (15%) | Claim-source mappings, escalation triggers, exploration protocol |
 
 #### Dev Workflow
 `architect-review`, `postmortem-writing`, `prompt-engineering`, `prd-generator`, `excalidraw-diagrams`, `rem-sleep`, `qmd-sessions`, `toolkit-scout`, `wrap-up`, `mwp` (I/O contracts for agent pipelines)

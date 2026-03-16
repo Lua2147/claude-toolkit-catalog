@@ -6,7 +6,7 @@ Full Claude Code toolkit — skills, agents, commands, GSD pipeline system, and 
 
 | Category | Count | Location |
 |----------|-------|----------|
-| Custom Skills | 246 | `skills/` |
+| Custom Skills | 252 | `skills/` |
 | Custom Agents | 168 | `agents/` |
 | Slash Commands | 303 | `commands/` |
 | Plugins (as commands) | 120 | `commands/` + `plugins/` |
@@ -17,6 +17,21 @@ Full Claude Code toolkit — skills, agents, commands, GSD pipeline system, and 
 | Plugin Packs | 10 (300+ skills) | Install separately |
 | MCP Servers | 10 | Configure in `~/.claude.json` |
 | CLI Tools | 6 | Install separately |
+
+## Claude Certified Architect Gap Skills
+
+| Skill | Exam Domain | Weight | Gaps Covered |
+|---|---|---|---|
+| `agentic-orchestration-patterns` | D1: Agentic Architecture | 27% | Fork sessions, escalation protocols, state persistence, hook lifecycle |
+| `tool-design-patterns` | D2: Tool Design & MCP | 18% | Tool descriptions, error responses, tool_choice, built-in tools |
+| `claude-code-ci` | D3: Config & Workflows | 20% | CI/CD integration, non-interactive mode, PR automation |
+| `claude-code-config-advanced` | D3: Config & Workflows | 20% | Glob rules, plan mode decisions, iterative refinement |
+| `structured-extraction` | D4: Prompt & Output | 20% | Few-shot extraction, validation-retry loops |
+| `message-batches-api` | D4: Prompt & Output | 20% | Batch processing at 50% cost, 10K+ items |
+| `ensemble-review` | D4: Prompt & Output | 20% | Multi-instance review, majority vote aggregation |
+| `confidence-calibration` | D4/D5 | 20%/15% | Confidence scoring, routing, calibration |
+| `context-reliability` | D5: Context & Reliability | 15% | Summarization traps, lost-in-middle, persistent facts |
+| `information-provenance` | D5: Context & Reliability | 15% | Claim-source mappings, escalation triggers, exploration protocol |
 
 ## Installation
 
