@@ -1,79 +1,208 @@
 ---
-name: x-posting
-description: Post tweets, read mentions, reply, like, retweet, and search on X/Twitter using the official v2 API.
+name: x-api
+description: X/Twitter API integration for posting tweets, threads, reading timelines, search, and analytics. Covers OAuth auth patterns, rate limits, and platform-native content posting. Use when the user wants to interact with X programmatically.
+origin: ECC
 ---
 
-# X/Twitter — Direct API
+# X API
 
-Post and engage on X/Twitter using the v2 API directly.
+Programmatic interaction with X (Twitter) for posting, reading, searching, and analytics.
 
-## API Credentials
+## When to Activate
 
-From `~/Mundi Princeps/config/api_keys.json` under `deal_intent_signals_v1.x`:
+- User wants to post tweets or threads programmatically
+- Reading timeline, mentions, or user data from X
+- Searching X for content, trends, or conversations
+- Building X integrations or bots
+- Analytics and engagement tracking
+- User says "post to X", "tweet", "X API", or "Twitter API"
 
-```
-Bearer Token: AAAAAAAAAAAAAAAAAAAAANV%2B7wEAAAAA7XROxzmNxNM4pHrpr%2Fvq3S3SiJ0%3D8NdUTuW7OFgA8tGxdYFP0pG7uVhPcDrG4a086MBoO2sSibSNko
-API Key: QCTkjZP9iED3KRRZSHothm3Wz
-API Secret: 46UQtxj4agbhEIX2CQv4kch1d0lAWX3HjhWp4p4XwwjFuGUsq6
-```
+## Authentication
 
-## Read Operations (Bearer Token)
+### OAuth 2.0 Bearer Token (App-Only)
+
+Best for: read-heavy operations, search, public data.
 
 ```bash
-BEARER="AAAAAAAAAAAAAAAAAAAAANV%2B7wEAAAAA7XROxzmNxNM4pHrpr%2Fvq3S3SiJ0%3D8NdUTuW7OFgA8tGxdYFP0pG7uVhPcDrG4a086MBoO2sSibSNko"
-
-# Search recent tweets
-curl -s "https://api.twitter.com/2/tweets/search/recent?query=YOUR+QUERY&max_results=10" \
-  -H "Authorization: Bearer $BEARER"
-
-# Get user by username
-curl -s "https://api.twitter.com/2/users/by/username/USERNAME" \
-  -H "Authorization: Bearer $BEARER"
-
-# Get user's tweets
-curl -s "https://api.twitter.com/2/users/USER_ID/tweets?max_results=10" \
-  -H "Authorization: Bearer $BEARER"
+# Environment setup
+export X_BEARER_TOKEN="your-bearer-token"
 ```
-
-## Write Operations (OAuth 1.0a)
-
-Posting requires OAuth 1.0a signature. Use the Typefully skill for scheduled posting, or implement OAuth signing:
 
 ```python
+import os
 import requests
-from requests_oauthlib import OAuth1
 
-auth = OAuth1(
-    'QCTkjZP9iED3KRRZSHothm3Wz',           # API Key
-    '46UQtxj4agbhEIX2CQv4kch1d0lAWX3HjhWp4p4XwwjFuGUsq6',  # API Secret
-    'ACCESS_TOKEN',                            # Need user access token
-    'ACCESS_TOKEN_SECRET'                      # Need user access token secret
+bearer = os.environ["X_BEARER_TOKEN"]
+headers = {"Authorization": f"Bearer {bearer}"}
+
+# Search recent tweets
+resp = requests.get(
+    "https://api.x.com/2/tweets/search/recent",
+    headers=headers,
+    params={"query": "claude code", "max_results": 10}
 )
+tweets = resp.json()
+```
 
-# Post tweet
-resp = requests.post(
-    'https://api.twitter.com/2/tweets',
-    json={"text": "Your tweet here"},
-    auth=auth
+### OAuth 1.0a (User Context)
+
+Required for: posting tweets, managing account, DMs.
+
+```bash
+# Environment setup — source before use
+export X_API_KEY="your-api-key"
+export X_API_SECRET="your-api-secret"
+export X_ACCESS_TOKEN="your-access-token"
+export X_ACCESS_SECRET="your-access-secret"
+```
+
+```python
+import os
+from requests_oauthlib import OAuth1Session
+
+oauth = OAuth1Session(
+    os.environ["X_API_KEY"],
+    client_secret=os.environ["X_API_SECRET"],
+    resource_owner_key=os.environ["X_ACCESS_TOKEN"],
+    resource_owner_secret=os.environ["X_ACCESS_SECRET"],
 )
 ```
 
-Note: User access tokens (OAuth 1.0a) require the OAuth flow. The bearer token only supports read operations.
+## Core Operations
 
-## Alternative: Typefully Skill
+### Post a Tweet
 
-For scheduling and posting, use the `typefully` skill which handles auth via its API:
-- Schedule posts for optimal times
-- Cross-post to LinkedIn, Threads, Bluesky
-- Thread support
+```python
+resp = oauth.post(
+    "https://api.x.com/2/tweets",
+    json={"text": "Hello from Claude Code"}
+)
+resp.raise_for_status()
+tweet_id = resp.json()["data"]["id"]
+```
+
+### Post a Thread
+
+```python
+def post_thread(oauth, tweets: list[str]) -> list[str]:
+    ids = []
+    reply_to = None
+    for text in tweets:
+        payload = {"text": text}
+        if reply_to:
+            payload["reply"] = {"in_reply_to_tweet_id": reply_to}
+        resp = oauth.post("https://api.x.com/2/tweets", json=payload)
+        tweet_id = resp.json()["data"]["id"]
+        ids.append(tweet_id)
+        reply_to = tweet_id
+    return ids
+```
+
+### Read User Timeline
+
+```python
+resp = requests.get(
+    f"https://api.x.com/2/users/{user_id}/tweets",
+    headers=headers,
+    params={
+        "max_results": 10,
+        "tweet.fields": "created_at,public_metrics",
+    }
+)
+```
+
+### Search Tweets
+
+```python
+resp = requests.get(
+    "https://api.x.com/2/tweets/search/recent",
+    headers=headers,
+    params={
+        "query": "from:affaanmustafa -is:retweet",
+        "max_results": 10,
+        "tweet.fields": "public_metrics,created_at",
+    }
+)
+```
+
+### Get User by Username
+
+```python
+resp = requests.get(
+    "https://api.x.com/2/users/by/username/affaanmustafa",
+    headers=headers,
+    params={"user.fields": "public_metrics,description,created_at"}
+)
+```
+
+### Upload Media and Post
+
+```python
+# Media upload uses v1.1 endpoint
+
+# Step 1: Upload media
+media_resp = oauth.post(
+    "https://upload.twitter.com/1.1/media/upload.json",
+    files={"media": open("image.png", "rb")}
+)
+media_id = media_resp.json()["media_id_string"]
+
+# Step 2: Post with media
+resp = oauth.post(
+    "https://api.x.com/2/tweets",
+    json={"text": "Check this out", "media": {"media_ids": [media_id]}}
+)
+```
 
 ## Rate Limits
-- Search recent: 300 requests/15min (bearer)
-- User tweets: 900 requests/15min (bearer)
-- Post tweet: 100/15min, 10,000/24hrs (OAuth)
 
-## Use Cases for Kadenwood
-- Monitor deal-related company mentions
-- Track founder/CEO activity of target companies
-- Research industry sentiment
-- Brand presence for Kadenwood Group
+X API rate limits vary by endpoint, auth method, and account tier, and they change over time. Always:
+- Check the current X developer docs before hardcoding assumptions
+- Read `x-rate-limit-remaining` and `x-rate-limit-reset` headers at runtime
+- Back off automatically instead of relying on static tables in code
+
+```python
+import time
+
+remaining = int(resp.headers.get("x-rate-limit-remaining", 0))
+if remaining < 5:
+    reset = int(resp.headers.get("x-rate-limit-reset", 0))
+    wait = max(0, reset - int(time.time()))
+    print(f"Rate limit approaching. Resets in {wait}s")
+```
+
+## Error Handling
+
+```python
+resp = oauth.post("https://api.x.com/2/tweets", json={"text": content})
+if resp.status_code == 201:
+    return resp.json()["data"]["id"]
+elif resp.status_code == 429:
+    reset = int(resp.headers["x-rate-limit-reset"])
+    raise Exception(f"Rate limited. Resets at {reset}")
+elif resp.status_code == 403:
+    raise Exception(f"Forbidden: {resp.json().get('detail', 'check permissions')}")
+else:
+    raise Exception(f"X API error {resp.status_code}: {resp.text}")
+```
+
+## Security
+
+- **Never hardcode tokens.** Use environment variables or `.env` files.
+- **Never commit `.env` files.** Add to `.gitignore`.
+- **Rotate tokens** if exposed. Regenerate at developer.x.com.
+- **Use read-only tokens** when write access is not needed.
+- **Store OAuth secrets securely** — not in source code or logs.
+
+## Integration with Content Engine
+
+Use `content-engine` skill to generate platform-native content, then post via X API:
+1. Generate content with content-engine (X platform format)
+2. Validate length (280 chars for single tweet)
+3. Post via X API using patterns above
+4. Track engagement via public_metrics
+
+## Related Skills
+
+- `content-engine` — Generate platform-native content for X
+- `crosspost` — Distribute content across X, LinkedIn, and other platforms

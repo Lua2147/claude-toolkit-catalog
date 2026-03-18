@@ -6,7 +6,7 @@ Full Claude Code toolkit — skills, agents, commands, GSD pipeline system, and 
 
 | Category | Count | Location |
 |----------|-------|----------|
-| Custom Skills | 252 | `skills/` |
+| Custom Skills | 262 | `skills/` |
 | Custom Agents | 168 | `agents/` |
 | Slash Commands | 303 | `commands/` |
 | Plugins (as commands) | 120 | `commands/` + `plugins/` |
@@ -120,7 +120,7 @@ cp -R gsd ~/.claude/get-shit-done
 
 | Skill | What It Does |
 |-------|-------------|
-| **toolkit-scout** | **Mandatory before any non-trivial task.** Scans 212 skills, 40 agents, 10 plugin packs, 10 MCP servers, 70+ scripts, CLI tools, and reference repos. |
+| **toolkit-scout** | **Mandatory before any non-trivial task.** Scans 262 skills, 168 agents, 10 plugin packs, 10 MCP servers, 70+ scripts, CLI tools, and reference repos. |
 | **rem-sleep** | Consolidates and defrags memory files across sessions |
 | **wrap-up** | End-of-session summary, context handoff, memory write |
 | **insights** | Analyzes correction patterns and workflow efficiency |
@@ -128,6 +128,12 @@ cp -R gsd ~/.claude/get-shit-done
 | **boris** | 43 Claude Code workflow tips (parallel work, plan mode, hooks, worktrees) |
 | **refine** | Self-scoring convergence loops — iterates until output quality plateaus |
 | **coding-agent-loops** | Persistent tmux coding sessions with Claude Code retry loops |
+| **continuous-learning-v2** | Instinct-based learning system — hooks observe sessions, creates atomic instincts with confidence scoring, evolves into skills/commands/agents |
+| **eval-harness** | Formal evaluation framework for Claude Code sessions implementing eval-driven development (EDD) |
+| **strategic-compact** | Suggests manual `/compact` at strategic phase boundaries to preserve context through task phases |
+| **verification-loop** | Comprehensive verification system for Claude Code session outputs |
+| **iterative-retrieval** | Progressive context retrieval pattern — solves the subagent context problem |
+| **dmux-workflows** | Multi-agent orchestration using dmux (tmux pane manager for parallel AI agent sessions) |
 | **cron-guide** | Reference for scheduling recurring tasks and heartbeats |
 
 ### Frontend & UI (SummonAI Kit + Vendor)
@@ -200,6 +206,7 @@ cp -R gsd ~/.claude/get-shit-done
 | **polars** | High-performance dataframes |
 | **dask** | Parallel computing for large datasets |
 | **market-research-reports** | Market research generation |
+| **investor-materials** | Pitch decks, one-pagers, investor memos, financial models, accelerator apps — consistency checks across fundraising assets |
 
 ### AI & ML
 
@@ -216,6 +223,10 @@ cp -R gsd ~/.claude/get-shit-done
 | **openrag** | Langflow | Single-command RAG platform (Langflow + Docling + OpenSearch) |
 | **autoresearch** | Karpathy | Autonomous experiment loop — agent iterates, evaluates, keeps improvements |
 | **mwp** | MWP Paper | Model Workspace Protocol — framework-free AI agent orchestration via filesystem + markdown I/O contracts |
+| **agent-harness-construction** | ECC | Design and optimize AI agent action spaces, tool definitions, and observation formatting |
+| **enterprise-agent-ops** | ECC | Operate long-lived agent workloads with observability, security boundaries, lifecycle management |
+| **cost-aware-llm-pipeline** | ECC | LLM cost optimization — model routing by complexity, budget tracking, prompt caching |
+| **fal-ai-media** | ECC | Unified media generation via fal.ai MCP — image (Nano Banana), video (Seedance, Kling, Veo 3), audio (CSM-1B) |
 
 ### SEO & GEO — AI Search Optimization (12 skills + 5 agents)
 
@@ -257,7 +268,7 @@ cp -R gsd ~/.claude/get-shit-done
 | Skill | What It Does |
 |-------|-------------|
 | **typefully** | Schedule social posts (X, LinkedIn, Threads, Bluesky) |
-| **x-posting** | X/Twitter API — search, post, engage |
+| **x-posting** | X/Twitter API v2 — post tweets, threads, media upload, search, analytics, rate limit handling |
 | **blog-image-generator** | Gemini-powered image generation for content |
 | **instagram-slides** | Blog-to-carousel pipeline for Instagram/LinkedIn |
 | **talking-head** | AI avatar video generation (ElevenLabs + Fal) |
@@ -301,6 +312,7 @@ cp -R gsd ~/.claude/get-shit-done
 | **postmortem-writing** | Incident reviews, root cause analysis |
 | **escalation** | Engineering/product/leadership escalation templates |
 | **excalidraw-diagrams** | Generate `.excalidraw` diagram files |
+| **content-hash-cache-pattern** | Cache expensive file processing via SHA-256 content hashes — path-independent, auto-invalidating |
 
 ### External Integrations
 
