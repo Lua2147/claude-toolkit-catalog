@@ -138,7 +138,7 @@ Each plugin has 1-3 slash commands (e.g., `/ui-designer:implement-design`, `/doc
 #### GSD Pipeline (13 agents)
 `gsd-planner`, `gsd-executor`, `gsd-verifier`, `gsd-debugger`, `gsd-phase-researcher`, `gsd-project-researcher`, `gsd-research-synthesizer`, `gsd-roadmapper`, `gsd-codebase-mapper`, `gsd-plan-checker`, `gsd-integration-checker`, `gsd-nyquist-auditor`
 
-### 3. Custom Skills by Domain (`~/.claude/skills/` — 242 skills)
+### 3. Custom Skills by Domain (`~/.claude/skills/` — 262 skills)
 
 #### Frontend & UI
 | Skill | Source | What it does |
@@ -226,6 +226,10 @@ Each plugin has 1-3 slash commands (e.g., `/ui-designer:implement-design`, `/doc
 | `openrag` | Langflow | Single-command RAG platform (Langflow + Docling + OpenSearch) |
 | `autoresearch` | Karpathy | Autonomous experiment loop — agent iterates, evaluates, keeps improvements |
 | `mwp` | MWP Paper | Model Workspace Protocol — framework-free AI agent orchestration via filesystem + markdown I/O contracts |
+| `agent-harness-construction` | ECC | Design and optimize agent action spaces, tool definitions, observation formatting |
+| `enterprise-agent-ops` | ECC | Long-lived agent workload operations, observability, lifecycle management |
+| `cost-aware-llm-pipeline` | ECC | LLM cost optimization — model routing, budget tracking, prompt caching |
+| `fal-ai-media` | ECC | Unified media generation via fal.ai — image, video, audio |
 
 #### Engineering Patterns (awesome-claude-code-toolkit — 34 skills)
 | Skill | What it does |
@@ -299,13 +303,20 @@ Each plugin has 1-3 slash commands (e.g., `/ui-designer:implement-design`, `/doc
 | `daily-review` | End-of-day pipeline review, KPI snapshot, next-day planning |
 | `revenue-metrics` | Pipeline/revenue metrics from Supabase CRM (+ Stripe when ready) |
 | `coding-agent-loops` | Persistent tmux coding sessions with retry loops |
+| `continuous-learning-v2` | Instinct-based learning — hooks observe sessions, evolves into skills/commands/agents |
+| `eval-harness` | Formal evaluation framework for Claude Code sessions (eval-driven development) |
+| `strategic-compact` | Smart `/compact` timing at phase boundaries to preserve context |
+| `verification-loop` | Comprehensive verification system for Claude Code session outputs |
+| `iterative-retrieval` | Progressive context retrieval — solves the subagent context problem |
+| `dmux-workflows` | Multi-agent orchestration via dmux (parallel tmux agent sessions) |
 | `cron-guide` | Reference for scheduling recurring tasks and heartbeats |
 
 #### Content & Social (Felix)
 | Skill | What it does |
 |---|---|
 | `research` | Multi-source intelligence (Brave, Exa, X, NewsAPI, GNews, Google CSE) |
-| `x-posting` | X/Twitter API — search, post, engage |
+| `x-posting` | X/Twitter API v2 — post, threads, media upload, search, analytics, rate limits |
+| `fal-ai-media` | Unified media generation via fal.ai — image, video, audio |
 | `blog-image-generator` | Gemini-powered image generation for content |
 | `instagram-slides` | Blog-to-carousel pipeline for Instagram/LinkedIn |
 | `talking-head` | AI avatar video generation (ElevenLabs + Fal) |
