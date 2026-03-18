@@ -6,7 +6,7 @@ Full Claude Code toolkit — skills, agents, commands, GSD pipeline system, and 
 
 | Category | Count | Location |
 |----------|-------|----------|
-| Custom Skills | 262 | `skills/` |
+| Custom Skills | 426 | `skills/` (262 standalone + 164 from plugin packs) |
 | Custom Agents | 168 | `agents/` |
 | Slash Commands | 303 | `commands/` |
 | Plugins (as commands) | 120 | `commands/` + `plugins/` |
@@ -120,7 +120,7 @@ cp -R gsd ~/.claude/get-shit-done
 
 | Skill | What It Does |
 |-------|-------------|
-| **toolkit-scout** | **Mandatory before any non-trivial task.** Scans 262 skills, 168 agents, 10 plugin packs, 10 MCP servers, 70+ scripts, CLI tools, and reference repos. |
+| **toolkit-scout** | **Mandatory before any non-trivial task.** Scans 426 skills (262 standalone + 164 plugin), 168 agents, 10 plugin packs, 10 MCP servers, 70+ scripts, CLI tools, and reference repos. |
 | **rem-sleep** | Consolidates and defrags memory files across sessions |
 | **wrap-up** | End-of-session summary, context handoff, memory write |
 | **insights** | Analyzes correction patterns and workflow efficiency |
