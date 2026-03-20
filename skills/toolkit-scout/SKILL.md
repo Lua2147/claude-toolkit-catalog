@@ -309,6 +309,7 @@ Each plugin has 1-3 slash commands (e.g., `/ui-designer:implement-design`, `/doc
 | `verification-loop` | Comprehensive verification system for Claude Code session outputs |
 | `iterative-retrieval` | Progressive context retrieval — solves the subagent context problem |
 | `dmux-workflows` | Multi-agent orchestration via dmux (parallel tmux agent sessions) |
+| `automation-mcp` | macOS desktop control — mouse, keyboard, screenshots, window management via MCP |
 | `cron-guide` | Reference for scheduling recurring tasks and heartbeats |
 
 #### Content & Social (Felix)
