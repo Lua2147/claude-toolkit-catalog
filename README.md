@@ -6,7 +6,7 @@ Full Claude Code toolkit — skills, agents, commands, GSD pipeline system, and 
 
 | Category | Count | Location |
 |----------|-------|----------|
-| Custom Skills | 426 | `skills/` (262 standalone + 164 from plugin packs) |
+| Custom Skills | 483 | `skills/` (319 standalone + 164 from plugin packs) |
 | Custom Agents | 168 | `agents/` |
 | Slash Commands | 303 | `commands/` |
 | Plugins (as commands) | 120 | `commands/` + `plugins/` |
