@@ -25,10 +25,18 @@ Scan all sections. Present only what's relevant to the current task.
 
 | Command | Trigger |
 |---|---|
+| `/ship` | **Universal build SOP** — invokes `ship-software` skill (v3.0). 3 tracks (hotfix/small/full), parallel-by-default orchestration, review loops in every phase, iteration from "done" criteria |
 | `/commit-push` | Saving and pushing work |
 | `/quick-commit` | Checkpointing without push |
 | `/review-changes` | Reviewing diffs |
-| `/grill` | Adversarial code review |
+| `/review` | Multi-mode ensemble review (code, architecture, security, plan, prompt, performance) |
+| `/review:code` | Code review with auto-fix |
+| `/review:security` | Security review (OWASP, secrets, dependencies) |
+| `/review:architecture` | Architecture + deployment + docs review |
+| `/review:plan` | Plan feasibility + documentation freshness |
+| `/review:prompt` | Prompt structure + enforceability review |
+| `/review:performance` | Performance profiling review |
+| `/grill` | Quick adversarial code review |
 | `/test-and-fix` | Failing tests |
 | `/techdebt` | End-of-session cleanup |
 | `/deploy` | Pushing to servers |
@@ -357,7 +365,7 @@ Each plugin has 1-3 slash commands (e.g., `/ui-designer:implement-design`, `/doc
 | `information-provenance` | D5 (15%) | Claim-source mappings, escalation triggers, exploration protocol |
 
 #### Dev Workflow
-`architect-review`, `postmortem-writing`, `prompt-engineering`, `prd-generator`, `excalidraw-diagrams`, `rem-sleep`, `qmd-sessions`, `toolkit-scout`, `wrap-up`, `mwp` (I/O contracts for agent pipelines)
+`ship-software` (v3.0 — universal build SOP, parallel-by-default orchestration, review loops in every phase, "done" criteria-driven iteration), `architect-review`, `review` (7-mode ensemble review with 110+ tools), `postmortem-writing`, `prompt-engineering`, `prd-generator`, `excalidraw-diagrams`, `rem-sleep`, `qmd-sessions`, `toolkit-scout`, `wrap-up`, `mwp` (I/O contracts for agent pipelines)
 
 ### 4. Plugin Packs (10 packs, 300+ skills)
 
@@ -398,6 +406,24 @@ Each plugin has 1-3 slash commands (e.g., `/ui-designer:implement-design`, `/doc
 | `linkedin` | LinkedIn automation — profiles, search, messages, connections, Sales Navigator |
 | `gws` | Google Workspace CLI — Drive, Gmail, Calendar, Sheets, Docs |
 | `qmd` | Session transcript indexing + semantic search |
+
+### 6b. Python Scraping & Browser Automation Libraries
+
+| Library | Version | What it does | Import |
+|---|---|---|---|
+| `scrapling` | 0.4.2 | Stealth HTTP fetcher — `Fetcher` (Chrome impersonation), `StealthyFetcher` (Cloudflare bypass), `PlayWrightFetcher` (full browser). Use `page.body.decode()` NOT `page.text` | `from scrapling.fetchers import Fetcher, StealthyFetcher` |
+| `crawlee` | 1.6.0 | Playwright-based crawler with auto link following, request queuing, `enqueueLinksByClickingElements`. Full SPA crawling with network interception | `from crawlee.crawlers import PlaywrightCrawler` |
+| `camoufox` | installed | Firefox-based stealth browser — anti-fingerprinting, humanized cursor movement, geolocation spoofing | `import camoufox` |
+| `browserforge` | installed | Browser fingerprint generation — realistic headers, TLS fingerprints, navigator properties | `import browserforge` |
+| `parsel` | installed | CSS/XPath selector engine (from Scrapy) — fast HTML parsing without full browser | `import parsel` |
+| `playwright` | installed | Microsoft Playwright — browser automation, also available via MCP server | `from playwright.sync_api import sync_playwright` |
+
+**When to use which:**
+- **Quick API probing** → `scrapling.Fetcher` (fastest, Chrome impersonation, dict cookies)
+- **Cloudflare-protected sites** → `scrapling.StealthyFetcher` (list cookies) or `camoufox`
+- **Full SPA crawl with auto-discovery** → `crawlee.PlaywrightCrawler` (follows links, clicks elements, captures XHR)
+- **Interactive browser + network capture** → Playwright MCP (`browser_navigate`, `browser_click`, `browser_network_requests`, `browser_run_code`)
+- **HTML parsing only** → `parsel` (no browser needed)
 
 ### 7. Existing Scripts (`scripts/`)
 
@@ -443,7 +469,10 @@ Only list resources that are actually relevant. Don't pad the list.
 ## Common Mistakes
 
 - Writing a new script when `scripts/` has 70+ existing ones
-- Building a browser scraper when Playwright MCP or stagehand skill is available
+- Building a browser scraper when Playwright MCP, stagehand, crawlee, scrapling, or camoufox is available
+- Using `page.text` with scrapling Fetcher (returns TextHandler object) — use `page.body.decode()`
+- Using dict cookies with StealthyFetcher (needs list[dict]) or list cookies with Fetcher (needs dict)
+- Writing manual XHR capture loops when `crawlee.PlaywrightCrawler` auto-discovers pages + captures all network
 - Creating a new slash command when an existing one covers the use case
 - Manually querying an API when an MCP server provides direct access
 - Not checking reference resources before designing from scratch
