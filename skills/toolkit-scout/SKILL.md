@@ -1,13 +1,13 @@
 ---
 name: toolkit-scout
-description: MANDATORY before any non-trivial task, plan mode entry, or building anything new. Scans all available resources — 252 skills, 168 agents, 303 commands, 15 rules, 10 plugin packs, 9 MCP servers, 70+ scripts, CLI tools, API keys, and reference repos. Fires automatically; no user prompt needed.
+description: MANDATORY before any non-trivial task, plan mode entry, or building anything new. Scans all available resources — 516 skills, 169 agents, 314 commands, 15 rules, 22 plugin packs, 9 MCP servers, 70+ scripts, CLI tools, API keys, and reference repos. Fires automatically; no user prompt needed.
 ---
 
 # Toolkit Scout
 
 ## Overview
 
-Before building or planning ANYTHING, scan this inventory. The system has 252 custom skills, 168 agents, 303 commands, 15 rules, 5 contexts, 7 CLAUDE.md templates, 10 plugin packs, 9 MCP servers, 70+ scripts, 6 CLI tools, and 12 reference repos. Most tasks can be partially or fully solved with what already exists.
+Before building or planning ANYTHING, scan this inventory. The system has 516 custom skills, 169 agents, 314 commands, 15 rules, 5 contexts, 7 CLAUDE.md templates, 22 plugin packs, 9 MCP servers, 70+ scripts, 6 CLI tools, and 12 reference repos. Most tasks can be partially or fully solved with what already exists.
 
 ## When to Use
 
@@ -146,7 +146,7 @@ Each plugin has 1-3 slash commands (e.g., `/ui-designer:implement-design`, `/doc
 #### GSD Pipeline (13 agents)
 `gsd-planner`, `gsd-executor`, `gsd-verifier`, `gsd-debugger`, `gsd-phase-researcher`, `gsd-project-researcher`, `gsd-research-synthesizer`, `gsd-roadmapper`, `gsd-codebase-mapper`, `gsd-plan-checker`, `gsd-integration-checker`, `gsd-nyquist-auditor`
 
-### 3. Custom Skills by Domain (`~/.claude/skills/` — 262 skills)
+### 3. Custom Skills by Domain (`~/.claude/skills/` — 516 skills)
 
 #### Frontend & UI
 | Skill | Source | What it does |

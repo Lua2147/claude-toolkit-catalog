@@ -8,3 +8,15 @@ node_modules/
 .env
 *.key
 *.pem
+__pycache__/
+*.pyc
+*.pyo
+*.zip
+*.tar.gz
+*.woff
+*.woff2
+.DS_Store
+.venv/
+node_modules/
+*.ttf
+*.otf

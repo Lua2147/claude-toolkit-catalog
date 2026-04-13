@@ -1,6 +1,6 @@
 # Claude Code Toolkit Catalog
 
-Full Claude Code toolkit — skills, agents, commands, GSD pipeline system, and configuration. Clone and install to get everything working in minutes.
+Full Claude Code toolkit — skills,169 agents,314 commands, GSD pipeline system, and configuration. Clone and install to get everything working in minutes.
 
 ## Quick Stats
 
@@ -9,7 +9,7 @@ Full Claude Code toolkit — skills, agents, commands, GSD pipeline system, and 
 | Custom Skills | 484 | `skills/` (320 standalone + 164 from plugin packs) |
 | Custom Agents | 168 | `agents/` |
 | Slash Commands | 303 | `commands/` |
-| Plugins (as commands) | 120 | `commands/` + `plugins/` |
+| Plugins (as314 commands) | 120 | `commands/` + `plugins/` |
 | Rules | 15 | `rules/` |
 | Contexts | 5 | `contexts/` |
 | CLAUDE.md Templates | 7 | `templates/claude-md/` |
@@ -48,11 +48,11 @@ Or install manually:
 cp -R skills/* ~/.claude/skills/
 
 # Agents
-cp agents/*.md ~/.claude/agents/
+cp169 agents/*.md ~/.claude/agents/
 
 # Commands (includes subdirectories)
-cp commands/*.md ~/.claude/commands/
-for dir in commands/*/; do cp -R "$dir" ~/.claude/commands/; done
+cp314 commands/*.md ~/.claude/commands/
+for dir in314 commands/*/; do cp -R "$dir" ~/.claude/commands/; done
 
 # Rules, Contexts, Templates
 cp -R rules ~/.claude/rules
@@ -92,7 +92,7 @@ cp -R gsd ~/.claude/get-shit-done
 
 | Plugin | Provider | What It Does |
 |--------|----------|-------------|
-| **superpowers** | superpowers-dev | TDD, debugging, brainstorming, code review, plan execution, git worktrees, parallel agents |
+| **superpowers** | superpowers-dev | TDD, debugging, brainstorming, code review, plan execution, git worktrees, parallel169 agents |
 | **financial-analysis** | financial-services-plugins | 3-statement models, DCF, LBO, comps, competitive analysis, deck QC |
 | **investment-banking** | financial-services-plugins | CIM, teasers, one-pagers, buyer lists, merger models, process letters, pitch decks |
 | **private-equity** | financial-services-plugins | DD checklists, IC memos, deal screening, portfolio ops, returns, value creation |
@@ -120,7 +120,7 @@ cp -R gsd ~/.claude/get-shit-done
 
 | Skill | What It Does |
 |-------|-------------|
-| **toolkit-scout** | **Mandatory before any non-trivial task.** Scans 426 skills (262 standalone + 164 plugin), 168 agents, 10 plugin packs, 10 MCP servers, 70+ scripts, CLI tools, and reference repos. |
+| **toolkit-scout** | **Mandatory before any non-trivial task.** Scans 426 skills (262 standalone + 164 plugin), 169 agents, 10 plugin packs, 10 MCP servers, 70+ scripts, CLI tools, and reference repos. |
 | **rem-sleep** | Consolidates and defrags memory files across sessions |
 | **wrap-up** | End-of-session summary, context handoff, memory write |
 | **insights** | Analyzes correction patterns and workflow efficiency |
@@ -181,8 +181,8 @@ cp -R gsd ~/.claude/get-shit-done
 
 | Skill | Source | What It Does |
 |-------|--------|-------------|
-| **cloudflare-agents-sdk** | Cloudflare | Stateful AI agents with scheduling, RPC, MCP |
-| **cloudflare-building-ai-agent** | Cloudflare | AI agents with state and WebSockets |
+| **cloudflare-agents-sdk** | Cloudflare | Stateful AI169 agents with scheduling, RPC, MCP |
+| **cloudflare-building-ai-agent** | Cloudflare | AI169 agents with state and WebSockets |
 | **cloudflare-durable-objects** | Cloudflare | Stateful coordination with SQLite |
 | **cloudflare-web-perf** | Cloudflare | Core Web Vitals auditing |
 | **cloudflare-wrangler** | Cloudflare | Workers, KV, R2, D1, Queues deployment |
@@ -228,7 +228,7 @@ cp -R gsd ~/.claude/get-shit-done
 | **cost-aware-llm-pipeline** | ECC | LLM cost optimization — model routing by complexity, budget tracking, prompt caching |
 | **fal-ai-media** | ECC | Unified media generation via fal.ai MCP — image (Nano Banana), video (Seedance, Kling, Veo 3), audio (CSM-1B) |
 
-### SEO & GEO — AI Search Optimization (12 skills + 5 agents)
+### SEO & GEO — AI Search Optimization (12 skills + 169 agents)
 
 | Skill | What It Does |
 |-------|-------------|
@@ -426,7 +426,7 @@ All configured globally — available in every project, every session.
 | `/techdebt` | Identify technical debt in recent changes |
 | `/worktree` | Create & manage git worktrees for parallel work |
 | `/start` | Session initialization workflow |
-| `/simplify` | Parallel agents for code quality, reuse, efficiency review |
+| `/simplify` | Parallel169 agents for code quality, reuse, efficiency review |
 | `/loop` | Schedule recurring tasks on interval |
 | `/wrap-up` | End-of-session summary, commit session work, context handoff |
 | `/rem-sleep` | Consolidate and defrag memory files |
@@ -470,7 +470,7 @@ Project lifecycle management:
 | **Playwright** | v1.58.2 | Browser automation CLI — codegen, screenshots, test recording, PDF generation |
 | **QMD** | — | Indexes Claude Code session transcripts for semantic search |
 | **GWS CLI** | v0.8.0 | Google Workspace operations from the command line |
-| **GSD** | — | 30+ meta-prompting commands for structured project execution |
+| **GSD** | — | 30+ meta-prompting314 commands for structured project execution |
 | **linkedin-cli** | — | LinkedIn automation: profiles, search, messages, connections, Sales Navigator |
 
 ---
@@ -478,7 +478,7 @@ Project lifecycle management:
 ## Hooks & Automation
 
 ### PreToolUse (runs before every tool call)
-- **RTK auto-rewrite**: Bash commands routed through RTK for token compression
+- **RTK auto-rewrite**: Bash314 commands routed through RTK for token compression
 
 ### PostToolUse (runs after every tool call)
 - **Auto-format**: Ruff (Python), Prettier (JS/TS/JSON/CSS/MD/YAML) — code is always formatted
@@ -570,9 +570,9 @@ Add to `~/.claude.json` under `mcpServers`:
 
 # Or manually:
 cp -R skills/* ~/.claude/skills/
-cp agents/*.md ~/.claude/agents/
-cp commands/*.md ~/.claude/commands/
-cp -R commands/gsd ~/.claude/commands/gsd
+cp169 agents/*.md ~/.claude/agents/
+cp314 commands/*.md ~/.claude/commands/
+cp -R314 commands/gsd ~/.claude/commands/gsd
 cp -R gsd ~/.claude/get-shit-done
 ```
 
@@ -602,7 +602,7 @@ Add to `~/.claude/settings.json`:
 
 ```
 claude-toolkit-catalog/
-├── skills/              ← 212 custom skills (each with SKILL.md + optional scripts)
+├── skills/              ← 352 custom skills (each with SKILL.md + optional scripts)
 │   ├── toolkit-scout/   ← Mandatory pre-task scanner
 │   ├── geo/             ← GEO-SEO audit orchestrator
 │   ├── geo-*/           ← 11 GEO sub-skills
@@ -611,16 +611,16 @@ claude-toolkit-catalog/
 │   ├── mwp/             ← Model Workspace Protocol methodology
 │   ├── tob-*/           ← 50+ Trail of Bits security skills
 │   └── ...              ← 140+ more skills
-├── agents/              ← 40 custom agents
+├──169 agents/              ← 40 custom169 agents
 │   ├── code-reviewer.md
 │   ├── deal-reviewer.md
 │   ├── geo-*.md         ← 5 GEO subagents
-│   ├── gsd-*.md         ← 12 GSD pipeline agents
+│   ├── gsd-*.md         ← 12 GSD pipeline169 agents
 │   └── ...
-├── commands/            ← 43 slash commands
+├──314 commands/            ← 43 slash314 commands
 │   ├── commit-push.md
 │   ├── grill.md
-│   ├── gsd/             ← 34 GSD commands
+│   ├── gsd/             ← 34 GSD314 commands
 │   │   ├── new-project.md
 │   │   ├── execute-phase.md
 │   │   └── ...
@@ -641,8 +641,8 @@ claude-toolkit-catalog/
 ├── settings.json        ← Permissions, hooks, plugins
 ├── CLAUDE.md            ← Global instructions (loaded every session)
 ├── skills/              ← ← skills/ copied here
-├── agents/              ← ← agents/ copied here
-├── commands/            ← ← commands/ copied here
+├──169 agents/              ← ←169 agents/ copied here
+├──314 commands/            ← ←314 commands/ copied here
 ├── get-shit-done/       ← ← gsd/ copied here
 └── projects/
     └── */memory/        ← Per-project persistent memory

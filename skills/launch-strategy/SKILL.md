@@ -1,18 +1,24 @@
 ---
 name: launch-strategy
-description: "When the user wants to plan a product launch, feature announcement, or release strategy. Also use when the user mentions 'launch,' 'Product Hunt,' 'feature release,' 'announcement,' 'go-to-market,'..."
-risk: unknown
-source: community
-date_added: "2026-02-27"
+description: "When the user wants to plan a product launch, feature announcement, or release strategy. Also use when the user mentions 'launch,' 'Product Hunt,' 'feature release,' 'announcement,' 'go-to-market,' 'beta launch,' 'early access,' 'waitlist,' 'product update,' 'how do I launch this,' 'launch checklist,' 'GTM plan,' or 'we're about to ship.' Use this whenever someone is preparing to release something publicly. For ongoing marketing after launch, see marketing-ideas."
+metadata:
+  version: 1.1.0
 ---
 
 # Launch Strategy
 
 You are an expert in SaaS product launches and feature announcements. Your goal is to help users plan launches that build momentum, capture attention, and convert interest into users.
 
+## Before Starting
+
+**Check for product marketing context first:**
+If `.agents/product-marketing-context.md` exists (or `.claude/product-marketing-context.md` in older setups), read it before asking questions. Use that context and only ask for information not already covered or specific to this task.
+
+---
+
 ## Core Philosophy
 
-The best companies don't just launch once--they launch again and again. Every new feature, improvement, and update is an opportunity to capture attention and engage your audience.
+The best companies don't just launch once—they launch again and again. Every new feature, improvement, and update is an opportunity to capture attention and engage your audience.
 
 A strong launch isn't about a single moment. It's about:
 - Getting your product into users' hands early
@@ -43,12 +49,12 @@ You own the channel (though not the audience). Direct access without algorithms 
 - Compound value from content
 
 **Start with 1-2 based on audience:**
-- Industry lacks quality content -> Start a blog
-- People want direct updates -> Focus on email
-- Engagement matters -> Build a community
+- Industry lacks quality content → Start a blog
+- People want direct updates → Focus on email
+- Engagement matters → Build a community
 
 **Example - Superhuman:**
-Built demand through an invite-only waitlist and one-on-one onboarding sessions. Every new user got a 30-minute live demo. This created exclusivity, FOMO, and word-of-mouth--all through owned relationships. Years later, their original onboarding materials still drive engagement.
+Built demand through an invite-only waitlist and one-on-one onboarding sessions. Every new user got a 30-minute live demo. This created exclusivity, FOMO, and word-of-mouth—all through owned relationships. Years later, their original onboarding materials still drive engagement.
 
 ### Rented Channels
 Platforms that provide visibility but you don't control. Algorithms shift, rules change, pay-to-play increases.
@@ -65,17 +71,17 @@ Platforms that provide visibility but you don't control. Algorithms shift, rules
 - Don't rely on them as your only strategy
 
 **Example - Notion:**
-Hacked virality through Twitter, YouTube, and Reddit where productivity enthusiasts were active. Encouraged community to share templates and workflows. But they funneled all visibility into owned assets--every viral post led to signups, then targeted email onboarding.
+Hacked virality through Twitter, YouTube, and Reddit where productivity enthusiasts were active. Encouraged community to share templates and workflows. But they funneled all visibility into owned assets—every viral post led to signups, then targeted email onboarding.
 
 **Platform-specific tactics:**
-- Twitter/X: Threads that spark conversation -> link to newsletter
-- LinkedIn: High-value posts -> lead to gated content or email signup
-- Marketplaces (Shopify, Slack): Optimize listing -> drive to site for more
+- Twitter/X: Threads that spark conversation → link to newsletter
+- LinkedIn: High-value posts → lead to gated content or email signup
+- Marketplaces (Shopify, Slack): Optimize listing → drive to site for more
 
 Rented channels give speed, not stability. Capture momentum by bringing users into your owned ecosystem.
 
 ### Borrowed Channels
-Tap into someone else's audience to shortcut the hardest part--getting noticed.
+Tap into someone else's audience to shortcut the hardest part—getting noticed.
 
 **Examples:**
 - Guest content (blog posts, podcast interviews, newsletter features)
@@ -90,7 +96,7 @@ Tap into someone else's audience to shortcut the hardest part--getting noticed.
 4. Set up affiliate/referral incentives
 
 **Example - TRMNL:**
-Sent a free e-ink display to YouTuber Snazzy Labs--not a paid sponsorship, just hoping he'd like it. He created an in-depth review that racked up 500K+ views and drove $500K+ in sales. They also set up an affiliate program for ongoing promotion.
+Sent a free e-ink display to YouTuber Snazzy Labs—not a paid sponsorship, just hoping he'd like it. He created an in-depth review that racked up 500K+ views and drove $500K+ in sales. They also set up an affiliate program for ongoing promotion.
 
 Borrowed channels give instant credibility, but only work if you convert borrowed attention into owned relationships.
 
@@ -175,7 +181,7 @@ Open the floodgates.
 
 ## Product Hunt Launch Strategy
 
-Product Hunt can be powerful for reaching early adopters, but it's not magic--it requires preparation.
+Product Hunt can be powerful for reaching early adopters, but it's not magic—it requires preparation.
 
 ### Pros
 - Exposure to tech-savvy early adopter audience
@@ -193,7 +199,7 @@ Product Hunt can be powerful for reaching early adopters, but it's not magic--it
 1. Build relationships with influential supporters, content hubs, and communities
 2. Optimize your listing: compelling tagline, polished visuals, short demo video
 3. Study successful launches to identify what worked
-4. Engage in relevant communities--provide value before pitching
+4. Engage in relevant communities—provide value before pitching
 5. Prepare your team for all-day engagement
 
 **On launch day:**
@@ -287,7 +293,7 @@ If a previous announcement resonated, apply those insights to future updates.
 Continue using email, social, and in-app messaging to highlight improvements.
 
 **Signal active development:**
-Even small changelog updates remind customers your product is evolving. This builds retention and word-of-mouth--customers feel confident you'll be around.
+Even small changelog updates remind customers your product is evolving. This builds retention and word-of-mouth—customers feel confident you'll be around.
 
 ---
 
@@ -326,9 +332,8 @@ Even small changelog updates remind customers your product is evolving. This bui
 
 ---
 
-## Questions to Ask
+## Task-Specific Questions
 
-If you need more context:
 1. What are you launching? (New product, major feature, minor update)
 2. What's your current audience size and engagement?
 3. What owned channels do you have? (Email list size, blog traffic, community)
@@ -345,6 +350,4 @@ If you need more context:
 - **page-cro**: For optimizing launch landing pages
 - **marketing-psychology**: For psychology behind waitlists and exclusivity
 - **programmatic-seo**: For comparison pages mentioned in post-launch
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
+- **sales-enablement**: For launch sales collateral and enablement materials
