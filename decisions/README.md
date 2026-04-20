@@ -26,3 +26,4 @@ Body:
 - [2026-04-20 — KB indexing hygiene (ghost dirs + orphan fixes + outputs index)](2026-04-20-kb-indexing-hygiene.md)
 - [2026-04-20 — app CLAUDE.md contradictions (pitchbook + capiq)](2026-04-20-app-claude-md-contradictions.md)
 - [2026-04-20 — claude-mem plugin disabled (qmd covers the use case)](2026-04-20-claude-mem-disabled.md)
+- [2026-04-20 — global ~/.claude/CLAUDE.md trim (162 → 80 lines, ~50%)](2026-04-20-global-claude-md-trim.md)
