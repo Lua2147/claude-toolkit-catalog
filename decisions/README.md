@@ -19,3 +19,4 @@ Body:
 ## Index
 
 - [2026-04-20 — context-mode plugin disabled](2026-04-20-context-mode-disabled.md)
+- [2026-04-20 — dialogue-gate hooks removed](2026-04-20-dialogue-gate-removed.md)
