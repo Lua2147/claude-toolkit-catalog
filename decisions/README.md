@@ -24,3 +24,4 @@ Body:
 - [2026-04-20 — linkdrop 3 rewrites (council / karpathy / 0x-kaize)](2026-04-20-linkdrop-3-rewrites.md)
 - [2026-04-20 — router-hub discovery fixes](2026-04-20-router-hub-fixes.md)
 - [2026-04-20 — KB indexing hygiene (ghost dirs + orphan fixes + outputs index)](2026-04-20-kb-indexing-hygiene.md)
+- [2026-04-20 — app CLAUDE.md contradictions (pitchbook + capiq)](2026-04-20-app-claude-md-contradictions.md)
