@@ -30,3 +30,4 @@ Body:
 - [2026-04-20 — final cleanup items 9-12 (permissions + orphan + mundi refs + build-scout error handling)](2026-04-20-final-cleanup-items-9-12.md)
 - [2026-04-20 — Phase A+B: 15 faithful skills rebuilt + router-hub audit 64%→88%](2026-04-20-phase-ab-skill-rebuild.md)
 - [2026-04-20 — Phase C+D: plugin-pack registry indexing + toolkit-scout concierge](2026-04-20-phase-cd-toolkit-hardening.md)
+- [2026-04-20 — Phase F+G+H: semantic routing via local Ollama embeddings (hybrid)](2026-04-20-phase-fgh-semantic-routing.md)
