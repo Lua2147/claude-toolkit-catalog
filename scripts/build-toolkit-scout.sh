@@ -18,10 +18,22 @@ import json, sys, re
 from collections import Counter, defaultdict
 from pathlib import Path
 
-reg = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+try:
+    reg = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+except json.JSONDecodeError as e:
+    print(f"toolkit-scout: registry is malformed JSON at {sys.argv[1]}: {e}", file=sys.stderr)
+    print(f"  Run `bash ~/.claude/scripts/build-registry.sh` to rebuild.", file=sys.stderr)
+    sys.exit(2)
+
+if not isinstance(reg, dict):
+    print(f"toolkit-scout: registry root is {type(reg).__name__}, expected object", file=sys.stderr)
+    sys.exit(2)
+
 out = Path(sys.argv[2])
 
 items = reg.get("items", [])
+if not items:
+    print(f"toolkit-scout: WARNING — registry has 0 items (key 'items' missing or empty). Output will be a placeholder.", file=sys.stderr)
 by_kind = defaultdict(list)
 for it in items:
     by_kind[it["kind"]].append(it)
