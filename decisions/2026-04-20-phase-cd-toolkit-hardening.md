@@ -64,6 +64,8 @@ Re-ran the audit's failing queries. Plugin-pack skills now surface correctly:
 | `generate a financial LBO model` | missed `financial-analysis:lbo-model` | `financial-analysis:lbo-model` #5 at 0.5207 | behind 4 generic `model`/`generate` hits — query-phrasing artifact, not indexing issue. `LBO model` (shorter) ranks correctly. |
 | `Playwright test` | missed `playwright` skill | `playwright` #5 at 0.5500 | ✅ surfaces after `test-engineer` agent + playwright MCP |
 | `debug a failing Playwright test` | saraev flood | flood demoted via tie-break, `playwright`/`mcp__playwright__*` reachable via `Playwright test` | mixed — semantic match still weak on phrased queries |
+| `investor outreach campaign` | `mundi-orch-investor-outreach` not yet present (Phase B skill) | `mundi-orch-investor-outreach` #1 at 1.0286 | ✅ top result |
+| `counterparty enrichment` | `mundi-orch-counterparty-enrich` not yet present (Phase B skill) | `/mundi:counterparty-enrich` #2 at 0.5188 | ⚠️ `saraev-outbound-ai-automated-lead-generation` beats it by 0.002 due to generic "enrichment" token overlap; slash-command still in top 3 |
 
 ### Toolkit-scout hybrid layout (Phase D)
 

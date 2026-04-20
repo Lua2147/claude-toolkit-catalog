@@ -165,8 +165,11 @@ if out.exists():
     marker_count = existing.count(MARKER)
 
     if marker_count == 0:
-        # Treat as curated-only OR brand-new — write full template with default head.
-        new_content = DEFAULT_CURATED_HEAD + MARKER + auto_tail
+        # File exists but has no marker. Do NOT overwrite curated content —
+        # append marker + tail at the end. This preserves frontmatter and any
+        # hand-written head text byte-for-byte.
+        sep = "" if existing.endswith("\n") else "\n"
+        new_content = existing + sep + MARKER + auto_tail
     elif marker_count == 1:
         head, _ = existing.split(MARKER, 1)
         # head retains trailing newline if user put one; that's preserved byte-for-byte
