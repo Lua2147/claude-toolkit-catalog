@@ -21,3 +21,4 @@ Body:
 - [2026-04-20 — context-mode plugin disabled](2026-04-20-context-mode-disabled.md)
 - [2026-04-20 — dialogue-gate hooks removed](2026-04-20-dialogue-gate-removed.md)
 - [2026-04-20 — google-workspace MCP deduplicated](2026-04-20-gws-dedup.md)
+- [2026-04-20 — linkdrop 3 rewrites (council / karpathy / 0x-kaize)](2026-04-20-linkdrop-3-rewrites.md)
