@@ -11,13 +11,13 @@ Generate high-quality images using Gemini's native image generation.
 
 From `~/Mundi Princeps/config/api_keys.json` under `deal_intent_signals_v1.gemini`:
 ```
-API Key: AIzaSyAXviv9nylpdcF46132PJNtRYT1cPPyNQ4
+API Key: [REDACTED-ROTATED-2026-04-19]
 ```
 
 ## Quick Start
 
 ```bash
-GEMINI_KEY="AIzaSyAXviv9nylpdcF46132PJNtRYT1cPPyNQ4"
+GEMINI_KEY="[REDACTED-ROTATED-2026-04-19]"
 
 curl -s -X POST \
   "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=$GEMINI_KEY" \
