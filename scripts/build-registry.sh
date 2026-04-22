@@ -560,3 +560,12 @@ PYEOF
 if [ -x "$HERE_DIR/build-toolkit-scout.sh" ]; then
   bash "$HERE_DIR/build-toolkit-scout.sh" || echo "[warn] toolkit-scout regeneration failed" >&2
 fi
+
+# -----------------------------------------------------------------------------
+# Regenerate semantic vectors (Phase F) if Ollama is reachable.
+# Mac: Ollama is running → vectors refresh, hybrid routing stays in sync.
+# Achilles: no Ollama → silent skip → route.sh auto-falls back to keyword.
+# -----------------------------------------------------------------------------
+if [ -x "$HERE_DIR/build-embeddings.sh" ] && curl -sf --max-time 2 http://localhost:11434/api/tags >/dev/null 2>&1; then
+  bash "$HERE_DIR/build-embeddings.sh" || echo "[warn] build-embeddings.sh failed; semantic vectors may be stale" >&2
+fi
