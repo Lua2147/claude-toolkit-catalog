@@ -230,7 +230,7 @@ Can't find the right tool?
 <!-- AUTO-GENERATED BELOW — DO NOT EDIT MANUALLY — run ~/.claude/scripts/build-toolkit-scout.sh to regenerate -->
 # Auto-generated inventory
 
-**Registry built:** `2026-04-20T12:04:43Z`  
+**Registry built:** `2026-04-22T00:06:38Z`  
 **Total items:** 2015  
 **Source:** `~/.claude/registry.json`  
 **Regenerate:** `bash ~/.claude/scripts/build-toolkit-scout.sh`

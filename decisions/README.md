@@ -31,3 +31,4 @@ Body:
 - [2026-04-20 — Phase A+B: 15 faithful skills rebuilt + router-hub audit 64%→88%](2026-04-20-phase-ab-skill-rebuild.md)
 - [2026-04-20 — Phase C+D: plugin-pack registry indexing + toolkit-scout concierge](2026-04-20-phase-cd-toolkit-hardening.md)
 - [2026-04-20 — Phase F+G+H: semantic routing via local Ollama embeddings (hybrid)](2026-04-20-phase-fgh-semantic-routing.md)
+- [2026-04-21 — Phase I: scout cleanup (frontmatter parser + registry rebuild)](2026-04-21-phase-i-scout-cleanup.md)

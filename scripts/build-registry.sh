@@ -69,6 +69,42 @@ def parse_frontmatter(text: str):
     return fm, body
 
 
+# Patterns for Claude chat output accidentally persisted at the top of a
+# SKILL.md (common on auto-generated skills missing proper --- frontmatter).
+# Skipped during fallback body scan so they don't become the description.
+_CHAT_ARTIFACT_PATTERNS = [
+    re.compile(r"^all\s+\S+\s+files?\s+(created|written|generated)", re.IGNORECASE),
+    re.compile(r"^here\.?s\s+what\s+(was|is)", re.IGNORECASE),
+    re.compile(r"^done[.,]?\s+\S+\s+files?", re.IGNORECASE),
+    re.compile(r"^(okay|great|perfect)[.,]\s", re.IGNORECASE),
+    re.compile(r"^the\s+\*{0,2}\w[\w\-]*\*{0,2}\s+skill\s+is\s+created", re.IGNORECASE),
+]
+
+
+def extract_description(fm: dict, text: str, body: str) -> str:
+    """Best-effort description extraction tolerant of malformed SKILL.md files.
+
+    Preference order:
+    1. fm['description'] from proper YAML frontmatter.
+    2. Inline 'description: ...' line in body (pseudo-frontmatter, no --- block).
+    3. First body line that is not a heading, blank, or Claude chat artifact.
+    """
+    desc = (fm.get("description") or "").strip()
+    if desc:
+        return desc
+    for line in (body or text).split("\n"):
+        s = line.strip()
+        if not s or s.startswith("#") or s == "---":
+            continue
+        m = re.match(r"^description\s*:\s*(.+)$", s, re.IGNORECASE)
+        if m:
+            return m.group(1).strip()[:280]
+        if any(p.match(s) for p in _CHAT_ARTIFACT_PATTERNS):
+            continue
+        return s[:280]
+    return ""
+
+
 def tokenize(*parts):
     """Lowercase word-set for keyword-fallback index."""
     buf = " ".join(p for p in parts if p)
@@ -122,16 +158,8 @@ def walk_skills():
             text = skill_md.read_text(encoding="utf-8", errors="replace")
         except Exception:
             text = ""
-        fm, _ = parse_frontmatter(text)
-        desc = fm.get("description", "").strip()
-        if not desc:
-            # Fallback: first non-heading, non-blank line of body.
-            for line in text.split("\n"):
-                s = line.strip()
-                if not s or s.startswith("#") or s == "---":
-                    continue
-                desc = s[:280]
-                break
+        fm, body = parse_frontmatter(text)
+        desc = extract_description(fm, text, body)
         tags = parse_tags(fm.get("tags", ""))
         source = fm.get("source", "").strip()
         # If skill lives inside a plugin-pack subtree, prefix with pack name
@@ -212,15 +240,8 @@ def walk_plugin_skills():
                 text = skill_md.read_text(encoding="utf-8", errors="replace")
             except Exception:
                 text = ""
-            fm, _ = parse_frontmatter(text)
-            desc = fm.get("description", "").strip()
-            if not desc:
-                for line in text.split("\n"):
-                    s = line.strip()
-                    if not s or s.startswith("#") or s == "---":
-                        continue
-                    desc = s[:280]
-                    break
+            fm, body = parse_frontmatter(text)
+            desc = extract_description(fm, text, body)
             tags = parse_tags(fm.get("tags", ""))
             full_name = f"{plugin}:{skill_name}"
             item_id = f"skill:{full_name}"
@@ -251,16 +272,9 @@ def walk_agents():
             text = md.read_text(encoding="utf-8", errors="replace")
         except Exception:
             text = ""
-        fm, _ = parse_frontmatter(text)
+        fm, body = parse_frontmatter(text)
         name = fm.get("name", md.stem).strip() or md.stem
-        desc = fm.get("description", "").strip()
-        if not desc:
-            for line in text.split("\n"):
-                s = line.strip()
-                if not s or s.startswith("#") or s == "---":
-                    continue
-                desc = s[:280]
-                break
+        desc = extract_description(fm, text, body)
         tags = parse_tags(fm.get("tags", ""))
         source = fm.get("model", "").strip()  # record model as source hint
         item_id = f"agent:{name}"
@@ -299,14 +313,7 @@ def walk_commands():
         except Exception:
             text = ""
         fm, body = parse_frontmatter(text)
-        desc = fm.get("description", "").strip()
-        if not desc:
-            for line in body.split("\n") if body else text.split("\n"):
-                s = line.strip()
-                if not s or s.startswith("#") or s == "---":
-                    continue
-                desc = s[:280]
-                break
+        desc = extract_description(fm, text, body)
         tags = parse_tags(fm.get("tags", ""))
         source = fm.get("source", "").strip()
         item_id = f"command:{slash_name}"
