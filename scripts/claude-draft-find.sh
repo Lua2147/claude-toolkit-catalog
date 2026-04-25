@@ -45,7 +45,7 @@ while IFS= read -r logfile; do
         printf '\n========== %s ==========\n' "$logfile"
         grep -n -F -B "$CTX" -A "$CTX" -- "$QUERY" "$logfile" || true
     fi
-done < <(find "$DRAFT_DIR" -maxdepth 1 -type f -name '*.log' "${FIND_ARGS[@]}" 2>/dev/null | xargs -I {} ls -t {} 2>/dev/null || true)
+done < <(if [ ${#FIND_ARGS[@]} -gt 0 ]; then find "$DRAFT_DIR" -maxdepth 1 -type f -name "*.log" "${FIND_ARGS[@]}"; else find "$DRAFT_DIR" -maxdepth 1 -type f -name "*.log"; fi 2>/dev/null | xargs -I {} ls -t {} 2>/dev/null || true)
 
 if [ "$matched" -eq 0 ]; then
     echo "No hits for: $QUERY"
